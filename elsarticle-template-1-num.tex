@@ -74,6 +74,7 @@
 \def\.{\cdot}
 \def\b{\textbf}
 \def\bell{\bm{\ell}}
+\def\={\equiv}
 
 %%   round  -  round parentheses are used (default)
 %%   square -  square brackets are used   [option]
@@ -170,7 +171,7 @@ This approach deals with source charges, which are point like objects that carry
 Another fundamental equation of electrostatics is the definition of the electric field, 
 
 \begin{equation}
-    \b{F} \equiv q\b{E}.
+    \b{F} \= q\b{E}.
 \end{equation}
 
 So combining what we have so far, the electric field for electrostatics is equal to,
@@ -206,7 +207,7 @@ The equations for a sphere and plane will be worked out by me later and added.
 One of the staples of the theory of electrodynamics is Gauss's law which relates the Electric flux to the enclosed charge. Electric flux is defined by
 
 \begin{equation}
-    \Phi_E \equiv \int_S \b{E}\. d\b{a}.
+    \Phi_E \= \int_S \b{E}\. d\b{a}.
 \end{equation}
 
 Gauss's law states that the electric flux is related to the charge enclosed by
@@ -252,7 +253,7 @@ and in integral form,
 I would like to note that this does not hold for electrodynamics though which will be covered later. Because the electric field is a conservative force we can define a potential to be,
 
 \begin{equation}
-    \b{E} \equiv -\nabla \phi,
+    \b{E} \= -\nabla \phi,
 \end{equation}
 
 where $\phi$ is the electric potential or scalar potential. This potential is sometimes denoted by V instead of $\phi$ such as in Griffith's textbook.
@@ -323,7 +324,7 @@ where $\hat{n}$ is the normal to the boundary.
 The work it takes to move a charge from point a to point b is given by can be derived from the definition of work which is,
 
 \begin{equation}
-    W \equiv \int_a^b \b{F}\. d\bell.
+    W \= \int_a^b \b{F}\. d\bell.
 \end{equation}
 
 Taking it from there and substituting the previous discussions ideas results in
@@ -381,7 +382,7 @@ Therefore there is an outward electrostatic pressure on the pressure equal to
 Capacitance is defined to be
 
 \begin{equation}
-    C \equiv \frac{Q}{\phi},
+    C \= \frac{Q}{\phi},
 \end{equation}
 
 and is measured in farads. This quantity is a purely geometrical one. For a parallel-plate capacitor, each of area A and distance d apart, the voltage
@@ -501,7 +502,7 @@ and,
 In the dipole term, the integral is called the dipole moment, and is defined as
 
 \begin{equation}
-    \b{p} \equiv \int\b{r'} \rho(\b{r'})d\tau'.
+    \b{p} \= \int\b{r'} \rho(\b{r'})d\tau'.
 \end{equation}
 
 Using this definition we can rewrite the dipole's contribution as
@@ -550,13 +551,13 @@ So if you put a dielectric material in an electric field, what will happen is th
 To answer the question of what type of field this produces, we need to define a surface charge density and a volume charge density. Let the surface charge density be defined as 
 
 \begin{equation}
-    \sigma_b \equiv \b{P} \. \hat{\b n},
+    \sigma_b \= \b{P} \. \hat{\b n},
 \end{equation}
 
 and the volume charge density defined as,
 
 \begin{equation}
-    \rho_b \equiv - \nabla \. \b{P}.
+    \rho_b \= - \nabla \. \b{P}.
 \end{equation}
 
 Using these definitions, and the formula for the potential defined earlier, you can derive
@@ -567,7 +568,7 @@ Using these definitions, and the formula for the potential defined earlier, you 
 
 So to calculate the potential, and thus the electric field, all one needs to do is examine what happens to the bound charges. What is a bound charge though? Is it math or a physical reality. Well as Griffiths puts it, "there is nothing further from the truth" than viewing these bound charges as mathematical constructs. It is called bound charges because they can not be removed from their source unlike a metal. They are a bulk feature, of many dipoles cancelling each other out and just looking at what the overall effect is. 
 
-\subsection{Electric Displacement}
+\subsection{Electric Displacement Field D}
 
 So now we want to examine how the field due to bound charges interacts with everything else. We shall attribute the name free charge, or $\rho_f$ so the "everything else." From how we defined free charge we can use that definition to say
 
@@ -584,7 +585,7 @@ Now incorporating this definition into Gauss's law leads to
 Defining a new variable, the electric displacement,
 
 \begin{equation}
-    \b{D} \equiv \epsilon_0 \b{E} + \b{P},
+    \b{D} \= \epsilon_0 \b{E} + \b{P},
 \end{equation}
 
 then allows us to rearrange the equation to be,
@@ -626,7 +627,7 @@ The new proportionality constant $\chi_e$ is called the electric susceptibility,
 This new constant of proportionality, $\epsilon$, is called the permittivity of the material. From this we can define can also define a new variable, the relative permittivity ( or dielectric constant ), 
 
 \begin{equation}
-    \epsilon_r \equiv 1 + \chi_e = \frac{\epsilon}{\epsilon_0}
+    \epsilon_r \= 1 + \chi_e = \frac{\epsilon}{\epsilon_0}
 \end{equation}
 
 If the space is entirely filled with a homogeneous linear dielectric then this simplifies a lot of our problems because now electric displacement would be irrotational. In general though, dielectrics are not isotropic. In the general case, $\chi_e$ is actually a tensor called the susceptibility tensor. 
@@ -658,7 +659,7 @@ For the special case of a finite parallel plate capacitor, with separation d, an
 For electrostatics we required stationary charges, and for magnetostatics we will require steady currents.. The fundamental force law of magnetostatics is called the Lorentz force law. This law was experimentally found so I will write it as a definition,
 
 \begin{equation}
-    \b{F}_{mag} \equiv q(\b{v} \x \b{B}).
+    \b{F}_{mag} \= q(\b{v} \x \b{B}).
 \end{equation}
 
 Combining this with the definition of the electric field results in the full electrodynamics force equation,
@@ -688,13 +689,13 @@ Another way of rewriting the Lorentz law in terms of current
 Instead of just talking about one dimensional currents, there are two dimensional surface currents, and three dimensional volume currents. For two dimensional currents we define them as
 
 \begin{equation}
-    \b{K} \equiv \frac{d\b{I}}{d\ell_\bot} = \sigma \b{v},
+    \b{K} \= \frac{d\b{I}}{d\ell_\bot} = \sigma \b{v},
 \end{equation}
 
 and for three dimensional currents,
 
 \begin{equation}
-    \b{J} \equiv \frac{d\b{I}}{da_\bot} =\rho \b{v}.
+    \b{J} \= \frac{d\b{I}}{da_\bot} =\rho \b{v}.
 \end{equation}
 
 The continuity equation stemming from charge conservation is
@@ -806,14 +807,122 @@ Now something to note is that THERE IS NO MAGNETIC MONOPOLE as we stated earlier
 where $\b{m}$ is the magnetic dipole moment, which is defined to be
 
 \begin{equation}
-    \b{m} \equiv I\b{a}.
+    \b{m} \= I\b{a}.
 \end{equation}
 
-$b{a}$ is the vector area of the loop, which for most simple cases is $a\hat{n}$. From this we can derive what the magnetic field due to a dipole must be
+$\b a$ is the vector area of the loop, which for most simple cases is $a\hat{\b n}$. From this we can derive what the magnetic field due to a dipole must be
 
 \begin{equation}
     \b{B}_{dip}(\b{r}) = \m \frac{1}{r^3}[3(\b{m} \. \hat{r})\hat{r} - \b{m}].
 \end{equation}
+
+\section{Magnetic Fields in Matter}
+
+\subsection{Dipoles}
+
+What do we mean when we call something magnetized? This is just lay speak for saying something is magnetically polarized. There are three main types of ways an object can be magnetized. First there are paramagnets which have a magnetization in the same direction of $\b B$, diamagnets which are in the opposite direction of $\b B$, and ferromagnets whose direction is based off the history of magnetic fields that have been applied over time, not just the current one.
+
+All of these stem from the electrons moving around atoms, creating magnetic dipoles. Each of these dipoles has a magnetic dipole moment $\b m$ and just like for electric dipoles the torque on one of these is
+
+\begin{equation}
+    \b N = \b m \x \b B.
+\end{equation}
+
+Also similarly the force on a magnetic dipole in a inhomogeneous magnetic field is
+
+\begin{equation}
+    \b F = \nabla (\b m \. \b B).
+\end{equation}
+
+If you apply these equations to an atom, then carrying through the calculations you end up with $\b m$ being in the opposite direction of $\b B$. This is what is responsible for diamagnetism. This effect is much weaker than paramagnetism, but is present in all materials. So when paramagnetism is not present, usually with atoms with an even number of electrons, diamagnetism is the leading order effect.
+
+\subsection{Magnetization}
+
+Another analogous term to the study of electric fields is when we talk about bulk magnetization. For electrostatics there is $\b P$, and for magnetostatics there is $\b M$ which is the magnetic dipole moment per unit volume, and is called the magnetization. Now using this definition in the equation for the vector potential from atomic magnetizations, we can define bound currents just like we defined bound charges. 
+
+\begin{equation}
+    \b J_b \= \nabla \x \b M,
+\end{equation}
+
+is a bound volume current while
+
+\begin{equation}
+    \b K_b \= \b M \x \hat{\b n},
+\end{equation}
+
+is a bound surface current. From this the equation for the vector potential becomes
+
+\begin{equation}
+    \b A(\b r) = \m \int_V \frac{\b J_b(\b r')}{\r}d\tau' + \m \oint_S \frac{\b K_b(\b r')}{\r} da'.
+\end{equation}
+
+\subsection{Auxillary Field H}
+
+Just like in electrostatics there is a secondary field that takes account for the magnetization of the material. For magnetostatics this field is called the auxillary field and is denoted by $\b H$. Following the same derivation that was done for electrostatics we will split up the current into the bound and free portions,
+
+\begin{equation}
+    \b J = \b J_b + \b J_f.
+\end{equation}
+
+Then using the definition of $\b J_b$ we used earlier and solving for $\b J_f$ we arrive at 
+
+\begin{equation}
+    \nabla \x ( \frac{1}{\mu_0}\b B - \b M) = \b J_f.
+\end{equation}
+
+Now we can use this to define the auxillary field,
+
+\begin{equation}
+    \b H \= \frac{1}{\mu_0} \b B - \b M.
+\end{equation}
+
+Thus the differential form of Ampere's law in terms of the auxillary field is
+
+\begin{equation}
+    \nabla \x \b H = \b J_f,
+\end{equation}
+
+and the integral form is
+
+\begin{equation}
+    \oint \b H \. d \bell = I_{f_{enc}}.
+\end{equation}
+
+\subsection{Effects of Media}
+
+For electrostatics we had a name for this, namely the dielectric. Magnetization does not have a good name for the effect of the actual material. What we can talk about though is the property the material changes, which is the magnetic susceptibility and permeability. Just like before, for fields that are not strong, most materials behave in a linear fashion. Unlike in electrostatics we will define the magnetic susceptibility through the auxiliary field,
+
+\begin{equation}
+    \b M = \chi_m \b H.
+\end{equation}
+
+$\chi_m$ is called the magnetic susceptibility. Just like in electrostatics though we can define a new constant $\mu$ such that
+
+\begin{equation}
+    \mu \= \mu_0(1+\chi_m),
+\end{equation}
+
+and we will call it the permeability of the material. We can thus draw the parallel to bound volume charge being proportional to free volume current through the equation
+
+\begin{equation}
+    \b J_b = \chi_m \b J_f.
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
