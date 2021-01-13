@@ -75,6 +75,7 @@
 \def\b{\textbf}
 \def\bell{\bm{\ell}}
 \def\={\equiv}
+\def\emf{\mathcal{E}}
 
 %%   round  -  round parentheses are used (default)
 %%   square -  square brackets are used   [option]
@@ -155,8 +156,6 @@ I am starting with Griffith's fourth edition of introduction to electrodynamics.
 I will be skipping mathematical introductions as I will consolidate all of that into a different text at a different time. In this text's current form, I have just been going through Griffiths and copying down a lot of the equations from there. I hope to be able to go back and put more of my voice into these notes once I have finished going over Griffiths' book.
 
 \section{Basic Electrostatics}
-
-
 
 \subsection{Coulomb's Law}
 
@@ -408,7 +407,6 @@ Another thing important for capacitors is the energy stored in one. The work to 
 \begin{equation}
     W = \frac{1}{2}C \phi^2
 \end{equation}
-
 
 \section{Potentials}
 
@@ -908,13 +906,75 @@ and we will call it the permeability of the material. We can thus draw the paral
     \b J_b = \chi_m \b J_f.
 \end{equation}
 
+\section{Electrodynamics}
 
+Everything we have done so far has consisted of either static charges or steady currents. What if this is not the case though? Well an interesting phenomena arises that allows us to combine the theory of the electricity and magnetism into one, electromagnetism. This is where the fun begins!
 
+\subsection{Ohm's Law}
 
+So from beginner electromagnetism courses, there is the familiar Ohm's law
 
+\begin{equation}
+    V = IR.
+\end{equation}
 
+But how does this fit into the vector formalism that we have been using so far? Well, that formula stems from the more general formula
 
+\begin{equation}
+    \b J = \sigma \b E,
+\end{equation}
 
+where $\sigma$ represents the conductivity of the material. How one determines the conductivity of a material is by testing the resistance $\rho$ (or more likely just looking it up in a table) and then taking the reciprocal, $\frac{1}{\rho} = \sigma$. For conductors $\rho = 0$ and for insulators $\rho = \infty$.
+
+To get the more familiar version of Ohm's law, one just uses the geometry of a given problem, and you can find the value of R algebraically in terms of $\sigma$. From this more familiar Ohm's law you can get Joule heating law which is
+
+\begin{equation}
+    P = IV = I^2R.
+\end{equation}
+
+\subsection{Faraday's Law}
+
+In a circuit currents are pushed through the wires and circuit elements by some force $\b f$. This force can be split up into two parts, source force of course\footnote{Yes I purposely wrote it this way because it is funny to say out loud. I do not mean to be condescending with my use of "of course."} such as a battery, and an electrostatics force that helps keep the current equal in all areas. Electromotive force is defined as the line integral of the total force around the circuit
+
+\begin{equation}
+    \emf \= \oint \b f \. d\bell = \oint \b f_s \. d\bell.
+\end{equation}
+
+The reason we are able to drop the $\b E$ from the integral is because $\oint \b E \. d \bell = 0$. For an ideal source $\b E = - \b F_s$ and thus $V = \emf$.
+
+One source of emf is motion inside a magnetic field. This will lead us back to the more recognizable equation for emf. Let us define the magnetic flux to be
+
+\begin{equation}
+    \Phi = \int \b B \. d\b a.
+\end{equation}
+
+Then the emf is equal to 
+
+\begin{equation}
+    \emf = - \frac{d\Phi}{dt}.
+\end{equation}
+
+This is called the flux rule for motional emf. A series of experiments by Faraday showed the induced emf was the same when moving the magnetic field to the left or the wire to the right. He also showed that changing the magnetic field could cause an emf. Combining these three facts he stated that a changing magnetic field induced an electric field. Mathematically this is represented by
+
+\begin{equation}
+    \nabla \x \b E = - \frac{\partial \b B}{\partial t},
+\end{equation}
+
+in its differential form, and in its integral form
+
+\begin{equation}
+    \oint \b E \. d \bell  = - \int \frac{\partial \b B}{\partial t} \. d\b a = -\frac{d \Phi}{dt}.
+\end{equation}
+
+A handy way to keep track of signs when using Faraday's law is to invoke Lenz's law which states "nature abhors a change in flux."
+
+From Faraday's law we can make an analog to the Biot-Savart law, now for electrostatics
+
+\begin{equation}
+    \b E = - \frac{1}{4 \pi} \frac{\partial}{\partial t} \int \frac{\b B \x \hr}{\r ^2}d\tau.
+\end{equation}
+
+To calculate $\b B$ for this equation, you might be tempted to use magnetostatics even though the magnetic field is changing. This is fine for most cases except for electromagnetic waves or radiation. This regime is called quasistatic case. 
 
 
 
