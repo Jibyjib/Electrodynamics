@@ -45,6 +45,7 @@
 
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
+\usepackage{amsmath}
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
 
@@ -76,6 +77,11 @@
 \def\bell{\bm{\ell}}
 \def\={\equiv}
 \def\emf{\mathcal{E}}
+\def\div{\nabla \.}
+\def\curl{\nabla \x}
+
+\newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\td}[2]{\frac{d #1 }{d #2}}
 
 %%   round  -  round parentheses are used (default)
 %%   square -  square brackets are used   [option]
@@ -975,6 +981,95 @@ From Faraday's law we can make an analog to the Biot-Savart law, now for electro
 \end{equation}
 
 To calculate $\b B$ for this equation, you might be tempted to use magnetostatics even though the magnetic field is changing. This is fine for most cases except for electromagnetic waves or radiation. This regime is called quasistatic case. 
+
+\subsection{Inductance}
+
+Imagine you have two different loops, and you run a current through one of the loops. This would cause a magnetic field, $\b B_1$, to be created which will interact with the second loop. This second loop then has some magnetic flux. This magnetic flux can be calculated through the simple equation
+
+\begin{equation}
+    \Phi_2 = M_{21}I_1.
+\end{equation}
+
+This new variable $M_{21}$ is called the mutual inductance between the two loops. This can be calculated from the not so useful Neumann formula
+
+\begin{equation}
+    M_{21} = \m \oint \oint \frac{d \bell_1 \. d \bell_2}{\r}.
+\end{equation}
+
+While this isn't the most useful formula it does teach us a few things about mutual inductance. Firstly it is a purely geometrical quantity depending on the line integrals, and that $M_{21} = M_{12}$.
+
+But to be honest, that part isn't to interesting in its current form. Like why would I add it to the electrodynamic chapter if I was just going to talk about a magnetostatics phenomena? Well here is the kicker, if I now vary the current through loop one over time, then I am changing the magnetic flux through the second loop and causing an emf to occur! But that induces a current in the second wire which is going to produce its own magnetic field which will then interact with the first loop. And guess what! That is going to cause another emf to be produced! How exciting, I'm sure everyone will have tons of fun calculating this all out.
+
+To simplify the thought experiment, what if our two loops were just the same loop. When we run a changing current through the loop, it causes a magnetic field to be produced which causes a magnetic flux within the same loop. Varying this current would cause an emf to occur which is trying to fight the change in current we are supplying to the loop. This is what back emf is, because nature abhors a change in magnetic flux, then you have to provide a little extra juice to get the current you want. Self equation for self inductance boils down to
+
+\begin{equation}
+    \emf = -L\td{I}{t},
+\end{equation}
+
+where L is just some geometric quantity which can often be solved by solving
+
+\begin{equation}
+    \frac{\Phi}{I} = L.
+\end{equation}
+
+Can we calculate how much work must be done to combat this back emf? Also where does the energy go? Well the work done is 
+
+\begin{equation}
+    W = \frac{1}{2}LI^2. 
+\end{equation}
+
+This work is actually just the energy stored in the magnetic field. When the circuit is turned back off, all this energy is taken away from the field and put back into trying to maintain the flow of current. A generalization of the previous equation is 
+
+\begin{equation}
+    W = \frac{1}{2 \mu_0} \int B^2 d\tau,
+\end{equation}
+
+where the bounds of integration are over all space. This represents the total energy stored in a magnetic field. 
+
+\subsection{Maxwell's Equations}
+
+So at this point, I've identified four main equations throughout the text which I have referenced as Maxwell's equations in some capacity. Also all the equations have been attributed to other scientist, why is the set of them attributed to Maxwell? Why is it taking me till now to organize them all together? Well I will answer all of these questions now. You might notice an oddity in the current set of Maxwell equations. Namely, that a changing magnetic field induces an electric but not vice versa\footnote{You may have also noticed that there is no source term for $\nabla \x \b E$ nor $\nabla \. \b B$. This simply comes from the fact that there are no magnetic monopoles.}. Well this is where our homie Maxwell comes in and saves the day. Ampere's law in its current form does not not work for nonsteady current. This is because the divergence of Ampere's law states that $0 = \mu_0 \nabla \. \b J$ which does not hold true in general. Adding a quick fix to this results in a new equation
+
+\begin{equation}
+    \curl \b B = \mu_0 \b J + \mu_0 \epsilon_0 \pd{\b E}{t}.
+\end{equation}
+
+Maxwell called this fix the displacement current and defined it as 
+
+\begin{equation}
+    \b J_d \= \epsilon_0 \pd{\b E}{t}.
+\end{equation}
+
+Now connecting all of the different phenomena and adding this fix fully unifies electricity and magnetism together. We can take these four equations as axioms for theoretical classical electrodynamics. If we include in another axiom, the Lorentz force law, then we can derive the rest of classical electrodynamics. Pretty nifty huh? Well we can push the symmetry of these equations even further if we assumed magnetic monopoles do exist then Maxwell's equations would read
+
+\begin{equation}
+    \div \b E  = \frac{\rho_e}{\epsilon_0}
+\end{equation}
+
+\begin{equation}
+    \div \b B  = \mu_0 \rho_m
+\end{equation}
+
+\begin{equation}
+    \curl \b E  = -\mu_0 \b J_m - \pd{\b B}{t}
+\end{equation}
+
+\begin{equation}
+    \curl \b B  = -\mu_0 \b J_e - \mu_0\epsilon_0\pd{\b E}{t}
+\end{equation}
+
+%%Figure out how to do all of these together
+
+Having the equations in this way fixes a lot of the symmetry problems but is unphysical. So I will not talk about the what-if scenario of magnetic monopoles existing further.
+    
+
+
+
+
+
+
+
+
 
 
 
