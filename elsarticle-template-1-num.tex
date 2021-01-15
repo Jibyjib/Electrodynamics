@@ -79,9 +79,16 @@
 \def\emf{\mathcal{E}}
 \def\div{\nabla \.}
 \def\curl{\nabla \x}
+\def\lap{\nabla^2}
+\def\and{\quad \text{and} \quad}
 
 \newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
+\newcommand{\pds}[2]{\frac{\partial^2 #1 }{\partial {#2}^2}}
 \newcommand{\td}[2]{\frac{d #1 }{d #2}}
+\newcommand{\tds}[2]{\frac{d^2 #1 }{d {#2}^}}
+\newcommand{\tup}[1]{\overset{\text{\tiny $\bm\leftrightarrow $}}{\b #1}}
+\newcommand{\hb}[1]{\hat{\b #1}}
+\newcommand{\brak}[1]{\langle #1 \rangle}
 
 %%   round  -  round parentheses are used (default)
 %%   square -  square brackets are used   [option]
@@ -202,7 +209,7 @@ That dq though can be a tricky thing to establish. Usually instead of a dq, you 
 An example, is if you have a long wire, the electric field produced by it would be equal to,
 
 \begin{equation}
-    \b{E}(z) = \k \frac{2\lambda}{z} \hat{\b z}.
+    \b{E}(z) = \k \frac{2\lambda}{z} \hb{z}.
 \end{equation}
 
 The equations for a sphere and plane will be worked out by me later and added.
@@ -224,7 +231,7 @@ Gauss's law states that the electric flux is related to the charge enclosed by
 From this integral equation we can derive a differential equation,
 
 \begin{equation}
-    \nabla \. \b{E} = \frac{\rho}{\epsilon_0},
+    \div \b{E} = \frac{\rho}{\epsilon_0},
 \end{equation}
 
 which is also called Gauss's law. 
@@ -232,13 +239,13 @@ which is also called Gauss's law.
 Useful results that can be calculated from Gauss's law are uniformly charged symmetrical objects. The electric field for a uniformly charged sphere is,
 
 \begin{equation}
-    \b{E}= \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2}\hat{\b r}.
+    \b{E}= \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2}\hb{r}.
 \end{equation}
 
 For a uniformly charged plane the electric field is,
 
 \begin{equation}
-    \b{E} = \frac{\sigma}{2\epsilon_0}\hat{\b n}.
+    \b{E} = \frac{\sigma}{2\epsilon_0}\hb{n}.
 \end{equation}
 
 \subsection{Conservative Force}
@@ -246,7 +253,7 @@ For a uniformly charged plane the electric field is,
 Faraday's law states that for electrostatics, the electric force is conservative. In differential form this means that
 
 \begin{equation}
-    \nabla \x \b{E} = 0,
+    \curl \b{E} = 0,
 \end{equation}
 
 and in integral form,
@@ -276,13 +283,13 @@ Where O is some reference point. O is normally where one defines the zero of the
 To try and simplify some problems, we will want to work with the potential rather than the electric field. To do so we need to convert Faraday's law and Gauss's law to be with respect to the electric potential. Taking Gauss's law and putting it in terms of the potential results in
 
 \begin{equation}
-    \nabla^2 \phi = -\frac{\rho}{\epsilon_0}.
+    \lap \phi = -\frac{\rho}{\epsilon_0}.
 \end{equation}
 
 This is known as Poisson's equation, and when there exists no source charges then $\rho = 0$ and we get Laplace's equation,
 
 \begin{equation}
-    \nabla^2 \phi = 0.
+    \lap \phi = 0.
 \end{equation}
 
 But what happens if we plug the potential into Faraday's law. What results is essentially a tautology because the curl of a gradient is zero. Therefore we only need a single equation to determine all of the physics rather than two.
@@ -312,13 +319,13 @@ and for the parallel component,
 The potential on the other hand does not have jump discontinuities because if it did then the electric field would be infinite at that point. Instead we can use our definition of the potential and put it into the equation that has the discontinuity to get back
 
 \begin{equation}
-    \frac{\partial \phi_{above}}{\partial n} - \frac{\partial \phi_{below}}{\partial n} = -\frac{\sigma}{\epsilon_0}.
+    \pd{\phi_{above}}{n} - \pd{\phi_{below}} = -\frac{\sigma}{\epsilon_0}.
 \end{equation}
 
 I have used the notation of a normal derivative without explaining it yet. The $\frac{\partial \phi}{\partial n}$ is a normal derivative and is defined as such
 
 \begin{equation}
-    \frac{\partial \phi}{\partial n} = \nabla \phi \. \hat{\b n},
+    \pd{\phi}{n} = \nabla \phi \. \hb{n},
 \end{equation}
 
 where $\hat{n}$ is the normal to the boundary. 
@@ -373,7 +380,7 @@ An example of applying these principles would be for a neutral conductor that ha
 Surface charges on a conductor will experience a force equal to 
 
 \begin{equation}
-    \b{f} = \frac{\sigma^2}{2 \epsilon_0} \hat{\b n}.
+    \b{f} = \frac{\sigma^2}{2 \epsilon_0} \hb{n}.
 \end{equation}
 
 Therefore there is an outward electrostatic pressure on the pressure equal to
@@ -512,7 +519,7 @@ In the dipole term, the integral is called the dipole moment, and is defined as
 Using this definition we can rewrite the dipole's contribution as
 
 \begin{equation}
-    \phi_{dip}(\b{r}) = \k\frac{\b{p}\. \hat{\b r}}{r^2}.
+    \phi_{dip}(\b{r}) = \k\frac{\b{p}\. \hb{r}}{r^2}.
 \end{equation}
 
 Note that for physical dipoles, $\b{p} = q\b{d}$ where $\b{d}$ is the separation vector between the positive and negative points.
@@ -555,13 +562,13 @@ So if you put a dielectric material in an electric field, what will happen is th
 To answer the question of what type of field this produces, we need to define a surface charge density and a volume charge density. Let the surface charge density be defined as 
 
 \begin{equation}
-    \sigma_b \= \b{P} \. \hat{\b n},
+    \sigma_b \= \b{P} \. \hb{n},
 \end{equation}
 
 and the volume charge density defined as,
 
 \begin{equation}
-    \rho_b \= - \nabla \. \b{P}.
+    \rho_b \= - \div \b{P}.
 \end{equation}
 
 Using these definitions, and the formula for the potential defined earlier, you can derive
@@ -583,7 +590,7 @@ So now we want to examine how the field due to bound charges interacts with ever
 Now incorporating this definition into Gauss's law leads to
 
 \begin{equation}
-    \epsilon_0 \nabla \. \b{E} = - \nabla \. \b{P} + \rho_f
+    \epsilon_0 \div \b{E} = - \div \b{P} + \rho_f
 \end{equation}
 
 Defining a new variable, the electric displacement,
@@ -595,7 +602,7 @@ Defining a new variable, the electric displacement,
 then allows us to rearrange the equation to be,
 
 \begin{equation}
-    \nabla \. \b{D} = \rho_f.
+    \div \b{D} = \rho_f.
 \end{equation}
 
 The integral form of this is
@@ -705,7 +712,7 @@ and for three dimensional currents,
 The continuity equation stemming from charge conservation is
 
 \begin{equation}
-    \nabla \. \b{J} = - \frac{\partial \rho}{\partial t}.
+    \div \b{J} = - \frac{\partial \rho}{\partial t}.
 \end{equation}
 
 \subsection{Biot-Savart Law}
@@ -727,7 +734,7 @@ An example of using this would be finding the magnetic field a distance s from a
 Another common example is to find the magnetic field a distance z above the center of a circular loop of radius R, carrying a steady current I. In this case the magnetic field is
 
 \begin{equation}
-    \b{B}(\b{z}) = \frac{\mu_0I}{2} \frac{R^2}{(R^2+z^2)^\frac{3}{2}}\hat{\b z}.
+    \b{B}(\b{z}) = \frac{\mu_0I}{2} \frac{R^2}{(R^2+z^2)^\frac{3}{2}}\hb{z}.
 \end{equation}
 
 \subsection{Ampere's Law}
@@ -741,7 +748,7 @@ So we have arrived at another of Maxwell's equations, Ampere's law. Maxwell will
 while written in differential form is,
 
 \begin{equation}
-    \nabla \x \b{B} = \mu_0 \b{J}.
+    \curl \b{B} = \mu_0 \b{J}.
 \end{equation}
 
 Like Gaussian surfaces, these one dimensional loops are called Amperian loops. This is one of the staples of magnetostatics to be able to calculate the magnetic field due to some current. 
@@ -749,23 +756,23 @@ Like Gaussian surfaces, these one dimensional loops are called Amperian loops. T
 Now the divergence of the magnetic field is fairly simple, simpler in fact than the electrostatics case. This is also one of Maxwell's equations, and is
 
 \begin{equation}
-    \nabla \. \b{B} = 0.
+    \div \b{B} = 0.
 \end{equation}
 
 All this is saying is that in nature, there does not exist magnetic point charges, i.e. magnetic monopoles. 
 
 \subsection{Magnetic Vector Potential}
 
-For electrostatics we took advantage of the fact that $\nabla \x \b{E} = 0$ to define a scalar potential. Now for magnetostatics we will take advantage of $\nabla \. \b{B} = 0$ to define a vector potential. vector calculus identities allow us to define a vector such that,
+For electrostatics we took advantage of the fact that $\curl \b{E} = 0$ to define a scalar potential. Now for magnetostatics we will take advantage of $\div \b{B} = 0$ to define a vector potential. vector calculus identities allow us to define a vector such that,
 
 \begin{equation}
-    \b{B} = \nabla \x \b{A}.
+    \b{B} = \curl \b{A}.
 \end{equation}
 
 One of the features of this vector potential is that we can define it in such a way that it is divergenceless. Now this is picking a particular gauge is called the Coulomb gauge, or radiation gauge. What is this gauge I'm referencing? Well a gauge is just a systematic way to set a fixed point in a potential, usually the zero. There are other gauges, such as the Lorenz gauge which can be useful for relativistic problems that we will explore later. Converting some of the previous equations into forms dependent on the vector potential we get,
 
 \begin{equation}
-    \nabla^2 \b{A} = - \mu_0 \b{J},
+    \lap \b{A} = - \mu_0 \b{J},
 \end{equation}
 
 and,
@@ -791,7 +798,7 @@ is the boundary condition for the perpendicular component of the magnetic field.
 This reminds me of the perpendicular portion of the electric field! The boundary conditions for the magnetic and electric fields essentially flipped versions of each other. To combine the magnetic field boundary equations into a single vector equation
 
 \begin{equation}
-    \b{B}_{above} - \b{B}_{below}= \mu_0 (\b{K} \x \hat{\b n}).
+    \b{B}_{above} - \b{B}_{below}= \mu_0 (\b{K} \x \hb{n}).
 \end{equation}
 
 \subsection{Multipole Expansion}
@@ -805,7 +812,7 @@ Harking back to electrostatics again, the magnetic vector potential can be writt
 Now something to note is that THERE IS NO MAGNETIC MONOPOLE as we stated earlier thus the first term always vanishes. So the first non-vanishing term is the dipole term which is
 
 \begin{equation}
-    \b{A}_{dip}(\b{r}) = \m \frac{\b{m} \x \hat{\b r}}{r^2},
+    \b{A}_{dip}(\b{r}) = \m \frac{\b{m} \x \hb{r}}{r^2},
 \end{equation}
 
 where $\b{m}$ is the magnetic dipole moment, which is defined to be
@@ -814,7 +821,7 @@ where $\b{m}$ is the magnetic dipole moment, which is defined to be
     \b{m} \= I\b{a}.
 \end{equation}
 
-$\b a$ is the vector area of the loop, which for most simple cases is $a\hat{\b n}$. From this we can derive what the magnetic field due to a dipole must be
+$\b a$ is the vector area of the loop, which for most simple cases is $a\hb{n}$. From this we can derive what the magnetic field due to a dipole must be
 
 \begin{equation}
     \b{B}_{dip}(\b{r}) = \m \frac{1}{r^3}[3(\b{m} \. \hat{r})\hat{r} - \b{m}].
@@ -845,13 +852,13 @@ If you apply these equations to an atom, then carrying through the calculations 
 Another analogous term to the study of electric fields is when we talk about bulk magnetization. For electrostatics there is $\b P$, and for magnetostatics there is $\b M$ which is the magnetic dipole moment per unit volume, and is called the magnetization. Now using this definition in the equation for the vector potential from atomic magnetizations, we can define bound currents just like we defined bound charges. 
 
 \begin{equation}
-    \b J_b \= \nabla \x \b M,
+    \b J_b \= \curl \b M,
 \end{equation}
 
 is a bound volume current while
 
 \begin{equation}
-    \b K_b \= \b M \x \hat{\b n},
+    \b K_b \= \b M \x \hb{n},
 \end{equation}
 
 is a bound surface current. From this the equation for the vector potential becomes
@@ -871,7 +878,7 @@ Just like in electrostatics there is a secondary field that takes account for th
 Then using the definition of $\b J_b$ we used earlier and solving for $\b J_f$ we arrive at 
 
 \begin{equation}
-    \nabla \x ( \frac{1}{\mu_0}\b B - \b M) = \b J_f.
+    \curl ( \frac{1}{\mu_0}\b B - \b M) = \b J_f.
 \end{equation}
 
 Now we can use this to define the auxillary field,
@@ -883,7 +890,7 @@ Now we can use this to define the auxillary field,
 Thus the differential form of Ampere's law in terms of the auxillary field is
 
 \begin{equation}
-    \nabla \x \b H = \b J_f,
+    \curl \b H = \b J_f,
 \end{equation}
 
 and the integral form is
@@ -957,19 +964,19 @@ One source of emf is motion inside a magnetic field. This will lead us back to t
 Then the emf is equal to 
 
 \begin{equation}
-    \emf = - \frac{d\Phi}{dt}.
+    \emf = - \td{\Phi}{t}.
 \end{equation}
 
 This is called the flux rule for motional emf. A series of experiments by Faraday showed the induced emf was the same when moving the magnetic field to the left or the wire to the right. He also showed that changing the magnetic field could cause an emf. Combining these three facts he stated that a changing magnetic field induced an electric field. Mathematically this is represented by
 
 \begin{equation}
-    \nabla \x \b E = - \frac{\partial \b B}{\partial t},
+    \curl \b E = - \pd{\b B}{t},
 \end{equation}
 
 in its differential form, and in its integral form
 
 \begin{equation}
-    \oint \b E \. d \bell  = - \int \frac{\partial \b B}{\partial t} \. d\b a = -\frac{d \Phi}{dt}.
+    \oint \b E \. d \bell  = - \int \pd{\b B}{t} \. d\b a = -\td{\Phi}{t}.
 \end{equation}
 
 A handy way to keep track of signs when using Faraday's law is to invoke Lenz's law which states "nature abhors a change in flux."
@@ -977,7 +984,7 @@ A handy way to keep track of signs when using Faraday's law is to invoke Lenz's 
 From Faraday's law we can make an analog to the Biot-Savart law, now for electrostatics
 
 \begin{equation}
-    \b E = - \frac{1}{4 \pi} \frac{\partial}{\partial t} \int \frac{\b B \x \hr}{\r ^2}d\tau.
+    \b E = - \frac{1}{4 \pi} \pd{}{t} \int \frac{\b B \x \hr}{\r ^2}d\tau.
 \end{equation}
 
 To calculate $\b B$ for this equation, you might be tempted to use magnetostatics even though the magnetic field is changing. This is fine for most cases except for electromagnetic waves or radiation. This regime is called quasistatic case. 
@@ -1028,7 +1035,7 @@ where the bounds of integration are over all space. This represents the total en
 
 \subsection{Maxwell's Equations}
 
-So at this point, I've identified four main equations throughout the text which I have referenced as Maxwell's equations in some capacity. Also all the equations have been attributed to other scientist, why is the set of them attributed to Maxwell? Why is it taking me till now to organize them all together? Well I will answer all of these questions now. You might notice an oddity in the current set of Maxwell equations. Namely, that a changing magnetic field induces an electric but not vice versa\footnote{You may have also noticed that there is no source term for $\nabla \x \b E$ nor $\nabla \. \b B$. This simply comes from the fact that there are no magnetic monopoles.}. Well this is where our homie Maxwell comes in and saves the day. Ampere's law in its current form does not not work for nonsteady current. This is because the divergence of Ampere's law states that $0 = \mu_0 \nabla \. \b J$ which does not hold true in general. Adding a quick fix to this results in a new equation
+So at this point, I've identified four main equations throughout the text which I have referenced as Maxwell's equations in some capacity. Also all the equations have been attributed to other scientist, why is the set of them attributed to Maxwell? Why is it taking me till now to organize them all together? Well I will answer all of these questions now. You might notice an oddity in the current set of Maxwell equations. Namely, that a changing magnetic field induces an electric but not vice versa. Well this is where our homie Maxwell comes in and saves the day. Ampere's law in its current form does not not work for nonsteady current. This is because the divergence of Ampere's law states that $\mu_0 \div \b J = 0$ which does not hold true in general. Adding a quick fix to this results in a new equation
 
 \begin{equation}
     \curl \b B = \mu_0 \b J + \mu_0 \epsilon_0 \pd{\b E}{t}.
@@ -1037,41 +1044,183 @@ So at this point, I've identified four main equations throughout the text which 
 Maxwell called this fix the displacement current and defined it as 
 
 \begin{equation}
-    \b J_d \= \epsilon_0 \pd{\b E}{t}.
+    \b J_d \= \epsilon_0 \pd{\b E}{t} = \pd{\b D}{t}.
 \end{equation}
 
-Now connecting all of the different phenomena and adding this fix fully unifies electricity and magnetism together. We can take these four equations as axioms for theoretical classical electrodynamics. If we include in another axiom, the Lorentz force law, then we can derive the rest of classical electrodynamics. Pretty nifty huh? Well we can push the symmetry of these equations even further if we assumed magnetic monopoles do exist then Maxwell's equations would read
+Now connecting all of the different phenomena and adding this fix fully unifies electricity and magnetism together. We can take these four equations as axioms for theoretical classical electrodynamics. If we include in another axiom, the Lorentz force law, then we can derive the rest of classical electrodynamics. Pretty nifty huh? Well we can push the symmetry of these equations even further if we assumed magnetic monopoles do exist. Then Maxwell's equations would read
 
 \begin{equation}
-    \div \b E  = \frac{\rho_e}{\epsilon_0}
+\begin{split}
+        & \div \b E  = \frac{\rho_e}{\epsilon_0}, \hspace{25.50pt} \curl \b E  = -\mu_0 \b J_m - \pd{\b B}{t} \\
+        & \div \b B  = \mu_0 \rho_m, \quad  \curl \b B  = -\mu_0 \b J_e - \mu_0\epsilon_0\pd{\b E}{t}\\
+\end{split}
 \end{equation}
 
-\begin{equation}
-    \div \b B  = \mu_0 \rho_m
-\end{equation}
-
-\begin{equation}
-    \curl \b E  = -\mu_0 \b J_m - \pd{\b B}{t}
-\end{equation}
-
-\begin{equation}
-    \curl \b B  = -\mu_0 \b J_e - \mu_0\epsilon_0\pd{\b E}{t}
-\end{equation}
-
-%%Figure out how to do all of these together
-
-Having the equations in this way fixes a lot of the symmetry problems but is unphysical. So I will not talk about the what-if scenario of magnetic monopoles existing further.
+The e and m subscripts are to differentiate electric vs magnetic charges and currents.Having the equations in this way fixes a lot of the symmetry problems but is unphysical. So I will not talk about the what-if scenario of magnetic monopoles existing further.\footnote{I personally do believe in the existence of magnetic monopoles, but the I do not feel like they are relevant to the discussion of classical electrodynamics.}
     
+\section{Conservation law}
+
+We have run into a conservation law already, the continuity equation,
+
+\begin{equation}
+     \pd{\rho}{t} = -\div \b J.
+\end{equation}
+
+This tells us that there is a local charge conservation, and this is baked into Maxwell's equations. Remember, I said that the only axioms we need are Maxwell's equations and the Lorentz force law, so the local continuity of charge must stem from just those five equations. We want to derive similar equations for all of the other quantities that are normally conserved such as energy, momentum, and angular momentum.
 
 
+\subsection{Conservation of Energy}
 
+We have already run into the equation for energy in electric and magnetic fields independently earlier. Harking back to them
 
+\begin{equation*}
+    W_e = \frac{\epsilon_0}{2} \int E^2 d\tau \and W_m = \frac{1}{2\mu_0} \int B^2 d\tau.
+\end{equation*}
 
+Thus the energy density is
 
+\begin{equation}
+    u = \frac{1}{2}(\epsilon_0 E^2 + \frac{1}{\mu_0} B^2).
+\end{equation}
 
+This is only one half of a continuity equation though as it represents an energy "charge" density. What is the energy "current?" Well from Maxwell's equations we can derive Poynting's theorem,
 
+\begin{equation}
+    \td{W}{t} = - \td{}{t} \int_V \frac{1}{2}(\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) d\tau - \frac{1}{\mu_0} \oint_S (\b E \x \b B) \. d\b a.
+\end{equation}
 
+This is simply an analogy to the work energy theorem of classical mechanics. If we look at the second integral, we can define a new vector called the Poynting vector equal to
 
+\begin{equation}
+    \b S \= \frac{1}{\mu_0} (\b E \x \b B).
+\end{equation}
+
+This represent an energy flux density or energy "current." Thus combining the two quantities in this section we can create the continuity equation for energy
+
+\begin{equation}
+    \pd{u}{t} = - \div \b S.    
+\end{equation}
+
+\subsection{Conservation of Momentum}
+
+If you look strictly at the particles in electrodynamics, it would appear they violate momentum conservation. For classical theories, this is strictly not allowed though. So what's the catch? We have to take into account the momentum carried by the fields themselves. 
+
+To carry out the calculations needed we are going to define the Maxwell stress tensor.\footnote{When I was first learning about this tensor my group of friends all joked that is called the Maxwell stress tensor because of how much stress it causes to undergraduates haha.} When I first was introduced to it I thought it was just a big nasty mess. Let's define the Maxwell stress tensor as
+
+\begin{equation}
+    T_{ij} \= \epsilon_0 (E_iE_j - \frac{1}{2}\delta_{ij}E^2) + \frac{1}{\mu_0}(B_iB_j - \frac{1}{2}\delta_{ij}B^2).
+\end{equation}
+
+Using this object we can write the total electromagnetic force on a set of charges as 
+
+\begin{equation}
+\label{mompoyn}
+    \b F = \oint_S \tup{T} \. d\b a - \epsilon_0 \mu_0 \td{}{t} \int_V \b S \hspace{3.5pt} d\tau.
+\end{equation}
+
+This shows us that the Maxwell stress tensor is like a momentum "current". It is interesting to note that the current of a vector is a tensor, while the current of scalar is a vector. Thus by using the fact that the force is simply the time derivative of the momentum we can write Equation \ref{mompoyn} as 
+
+\begin{equation}
+    \td{\b p_{mech}}{t} = -\epsilon_0 \mu_0 \td{}{t}\int_V \b S \hspace{3.5pt} d\tau + \oint_S \tup{T} \. d\b a.
+\end{equation}
+
+Comparing this to Poynting's equation we can identify what the momentum density should be,
+
+\begin{equation}
+    \b g = \mu_0\epsilon_0 \b S.
+\end{equation}
+
+I would like to note again that since the quantity we are dealing with, momentum, is a vector, its density is also a vector. Now we can write the continuity equation for momentum to be
+
+\begin{equation}
+    \pd{\b g}{t} = \div \tup{T}.
+\end{equation}
+
+From here we can define angular momentum from the usual means as 
+
+\begin{equation}
+    \b L = \b r \x \b g.
+\end{equation}
+
+Angular momentum unfortunately does not have a nice neat and tidy continuity equation.\footnote{:(.}
+
+\section{Electromagnetic Waves}
+
+\subsection{Electromagnetic Waves in Vacuum}
+
+Decoupling Maxwell's equations leads to two three dimensional wave equations
+
+\begin{equation}
+    \lap \b E = \mu_0 \epsilon_0 \pds{\b E}{t}, \and \lap \b E = \mu_0 \epsilon_0 \pds{\b B}{t}.
+\end{equation}
+
+From the knowledge of wave mechanics we know that $\mu_0 \epsilon_0$ is a speed of propagation of the wave and we can see that both the electric and magnetic fields travel at this speed. If we are to plug in their values we find that
+
+\begin{equation}
+    \frac{1}{\sqrt{\mu_0 \epsilon_0}} = 3.00 \x 10^8 m/s.
+\end{equation}
+
+This is actually just the speed of light. This implies that light is an electromagnetic wave. From plugging the solutions of the wave equation into Maxwell's equation we find that 
+
+\begin{equation}
+    \b B = \frac{1}{c} \hb{k} \x \b E,
+\end{equation}
+
+where $\b k$ is the wave vector. This implies that the phase of the electric and magnetic fields are the same and that the fields are perpendicular to each other. 
+
+Plugging this equation back in Poynting vector results in
+
+\begin{equation}
+    \b S = \frac{1}{\mu_0c}E^2\hb{k} = c\epsilon_0 E^2 \hb{k} = cu \hb{k},
+\end{equation}
+
+where u is the energy per unit volume. Also by how we defined the momentum density, it must be equal to 
+
+\begin{equation}
+    \b g = \frac{u}{c} \hb{k}
+\end{equation}
+
+Time averaging these values results in
+
+\begin{equation}
+\begin{split}
+    & \brak{u} = \frac{\epsilon_0}{2}E^2, \\
+    & \brak{\b S} = \frac{c\epsilon_0}{2}E^2 \hb{k}, \\
+    & \brak{\b g} = \frac{\epsilon_0}{2c}E^2 \hb{k}.
+\end{split}
+\end{equation}
+
+Let us define the intensity of an electromagnetic wave as 
+
+\begin{equation}
+    I \= \brak{\b S \. \hb{k}}.
+\end{equation}
+
+Thus when electromagnetic waves comes into contact with something there is some sort of radiation pressure. For a perfect absorber there this radiation pressure is equal to 1/c, and for a perfect reflector the radiation pressure is 2/c.
+
+All of these results transfer over to if light is placed in matter with the simple switch of $\epsilon_0 \rightarrow \epsilon$ and $\mu_0 \rightarrow \mu.$ The speed of the wave then is 1/$\sqrt{\mu \epsilon}$ = c/n where n is the index of refraction. If $\mu_r$ is not given in the problem you should assume it to be 1.
+
+\subsection{Reflection and Transmission of EM Waves}
+
+When talking about the reflection and transmission of waves let a subscripts I, R, T represent the incident, reflected, and transmitted portions of the quantities. If the plane comes at a boundary at normal incidence then the reflection coefficient is 
+
+\begin{equation}
+    R \= \frac{I_R}{I_I} = (\frac{n_1 - n_2}{n_2 + n_2})^2,
+\end{equation}
+
+where I is the is intensity of the wave. The transmission coefficient\footnote{These are very similar to a lot of wave mechanics problems such as in classical mechanics or quantum mechanics.} is
+
+\begin{equation}
+    T \= \frac{I_T}{I_I} = \frac{4n_1n_2}{(n_1 + n_2)^2}.
+\end{equation}
+
+Notice how R+T = 1, which states that all of the quantities, such as energy and momentum, of the incident wave are exactly accounted for in the reflected and transmitted waves. But does all of this hold for oblique incidence? There are three laws of optics which we must take into account when talking about this.
+
+The first law states that the incident, reflected, and transmitted wave vectors form a plane which also include the normal to the surface. The second law, or law of reflection, states that the angle of incidence is equal to the angle of reflection. Lastly the third law, also known as Snell's law or the law of refraction, is an equation relating the incident angle to the transmitted angle,
+
+\begin{equation}
+      n_1 \sin\theta_I = n_2\sin\theta_T.
+\end{equation}
 
 
 
