@@ -81,6 +81,8 @@
 \def\curl{\nabla \x}
 \def\lap{\nabla^2}
 \def\and{\quad \text{and} \quad}
+\def\9{\left(}
+\def\0{\right)}
 
 \newcommand{\pd}[2]{\frac{\partial #1 }{\partial #2}}
 \newcommand{\pds}[2]{\frac{\partial^2 #1 }{\partial {#2}^2}}
@@ -88,6 +90,7 @@
 \newcommand{\tds}[2]{\frac{d^2 #1 }{d {#2}^}}
 \newcommand{\tup}[1]{\overset{\text{\tiny $\bm\leftrightarrow $}}{\b #1}}
 \newcommand{\hb}[1]{\hat{\b #1}}
+\newcommand{\hbm}[1]{\hat{\bm #1}}
 \newcommand{\brak}[1]{\langle #1 \rangle}
 
 %%   round  -  round parentheses are used (default)
@@ -178,7 +181,7 @@ The basic approach to electrostatics involves Coulomb's law,
     \b{F} = \k\frac{qQ}{\r^2}\hr.
 \end{equation}
 
-This approach deals with source charges, which are point like objects that carry some charge, q. $\epsilon_0$ is the permittivity of free space, equal to $8.85 \x 10^{-12} \frac{C^2}{N \. m^2}$. This equation is more or less postulating and then checked via experiment. Lets use this as one of our postulates of electrostatics. Once we move to electrodynamics this can be derived from Maxwell's equations. Because this equation is linear with respect to q or Q, then the law of superposition can be used when calculating out the total force on a particular charge.
+This approach deals with source charges, which are point like objects that carry some charge, q. $\epsilon_0$ is the permittivity of free space, equal to $8.85 \x 10^{-12} \hspace{3pt} C^2/ N \. m^2 $. This equation is more or less postulating and then checked via experiment. Lets use this as one of our postulates of electrostatics. Once we move to electrodynamics this can be derived from Maxwell's equations. Because this equation is linear with respect to q or Q, then the law of superposition can be used when calculating out the total force on a particular charge.
 
 Another fundamental equation of electrostatics is the definition of the electric field, 
 
@@ -652,7 +655,7 @@ For homogeneous linear isotropic materials, the bound charge density can be rela
 To compute the energy in a dielectric system, applying the definitions applied above, simplifies the equation down to
 
 \begin{equation}
-    U = \frac{1}{2}\int \b{D}\. \b{E}d\tau.
+    U = \frac{1}{2}\int \b{D}\. \b{E} \hspace{4pt} d\tau.
 \end{equation}
 
 This equation ONLY works for linear homogeneous isotropic dielectrics though.
@@ -723,12 +726,12 @@ The Biot-Savart law is
     \b{B}(\b{r}) = \m \int \frac{\b{I} \x \hat{\r}}{\r^2}dl' = \m I \int \frac{d\bell \x \hr}{\r^2}.
 \end{equation}
 
-Here I have introduced a new constant, $\mu_0$, which is called the permeability of free space. Unless you are trying to be more precise than $10^{-16}$, you can simply use $\mu_0 = 4\pi \x 10^{-7} \frac{H}{m}$.
+Here I have introduced a new constant, $\mu_0$, which is called the permeability of free space. Unless you are trying to be more precise than $10^{-16}$, you can simply use $\mu_0 = 4\pi \x 10^{-7} H/m$.
 
 An example of using this would be finding the magnetic field a distance s from a long straight wire that has a current I. The magnetic field is then,
 
 \begin{equation}
-    \b{B} = \frac{\mu_0I}{2\pi s}\hat{\bm\phi}.
+    \b{B} = \frac{\mu_0I}{2\pi s}\hbm{\phi}.
 \end{equation}
 
 Another common example is to find the magnetic field a distance z above the center of a circular loop of radius R, carrying a steady current I. In this case the magnetic field is
@@ -937,7 +940,7 @@ But how does this fit into the vector formalism that we have been using so far? 
     \b J = \sigma \b E,
 \end{equation}
 
-where $\sigma$ represents the conductivity of the material. How one determines the conductivity of a material is by testing the resistance $\rho$ (or more likely just looking it up in a table) and then taking the reciprocal, $\frac{1}{\rho} = \sigma$. For conductors $\rho = 0$ and for insulators $\rho = \infty$.
+where $\sigma$ represents the conductivity of the material. How one determines the conductivity of a material is by testing the resistance $\rho$ (or more likely just looking it up in a table) and then taking the reciprocal, $1/\rho = \sigma$. For conductors $\rho = 0$ and for insulators $\rho = \infty$.
 
 To get the more familiar version of Ohm's law, one just uses the geometry of a given problem, and you can find the value of R algebraically in terms of $\sigma$. From this more familiar Ohm's law you can get Joule heating law which is
 
@@ -1205,7 +1208,7 @@ All of these results transfer over to if light is placed in matter with the simp
 When talking about the reflection and transmission of waves let a subscripts I, R, T represent the incident, reflected, and transmitted portions of the quantities. If the plane comes at a boundary at normal incidence then the reflection coefficient is 
 
 \begin{equation}
-    R \= \frac{I_R}{I_I} = (\frac{n_1 - n_2}{n_2 + n_2})^2,
+    R \= \frac{I_R}{I_I} = (\frac{n_1 - n_2}{n_1+ n_2})^2,
 \end{equation}
 
 where I is the is intensity of the wave. The transmission coefficient\footnote{These are very similar to a lot of wave mechanics problems such as in classical mechanics or quantum mechanics.} is
@@ -1216,11 +1219,348 @@ where I is the is intensity of the wave. The transmission coefficient\footnote{T
 
 Notice how R+T = 1, which states that all of the quantities, such as energy and momentum, of the incident wave are exactly accounted for in the reflected and transmitted waves. But does all of this hold for oblique incidence? There are three laws of optics which we must take into account when talking about this.
 
-The first law states that the incident, reflected, and transmitted wave vectors form a plane which also include the normal to the surface. The second law, or law of reflection, states that the angle of incidence is equal to the angle of reflection. Lastly the third law, also known as Snell's law or the law of refraction, is an equation relating the incident angle to the transmitted angle,
+The first law states that the incident, reflected, and transmitted wave vectors form a plane which also include the normal to the surface. What this tells me, that if I take any two of those vectors that are linearly independent, then I have a basis that I can write the other two vectors in terms of.
+
+The second and third law relate different angle to each other. The second law, or law of reflection, states that the angle of incidence is equal to the angle of reflection. Lastly the third law, also known as Snell's law or the law of refraction, is an equation relating the incident angle to the transmitted angle,
 
 \begin{equation}
       n_1 \sin\theta_I = n_2\sin\theta_T.
 \end{equation}
+
+Now let us define two new coefficient $\alpha$ and $\beta$
+
+\begin{equation}
+    \alpha \= \frac{\cos\theta_T}{\cos\theta_I},
+\end{equation}
+
+and
+
+\begin{equation}
+    \beta \= \frac{\mu_1n_2}{\mu_2n_1}.
+\end{equation}
+
+This allows us to concisely write Fresnel's equations for polarization in the plane of incidence. 
+
+\begin{equation}
+    E_{0_R} = \9 \frac{\alpha - \beta}{\alpha + \beta} \0 E_{0_I}, \and E_{0_T} = \9\frac{2}{\alpha + \beta}\0 E_{0_I}.
+\end{equation}
+
+Solving this for normal incidence we can recover the formula for Brewster's angle which in the most general form is
+
+\begin{equation}
+    \sin^2\theta_B = \frac{1-\beta^2}{(n_1/n_2 -\beta^2}.
+\end{equation}
+
+Making the assumption that $\mu_r$ for both material is roughly equal to one allows us to recover the simplified version of Brewster's angle
+
+\begin{equation}
+    \tan\theta_B = \frac{n_2}{n_1}.
+\end{equation}
+
+\subsection{Absorption and Dispersion of Electromagnetic Waves}
+
+ All of that is fine and dandy, but what if there actually is free charges and currents? For conductors free charges and free charge currents will spread out and form a charge distribution on the surface almost instantaneously. Maxwell's equations then become
+ 
+\begin{equation}
+\begin{split}
+    & \div \b E = 0, \quad \curl \b E = -\pd{\b B}{t}, \\
+    & \div \b B = 0, \quad \curl \b B = \mu \epsilon \pd{\b E}{t} + \mu \sigma \b E.
+\end{split}
+\end{equation}
+
+If we try to put these into wave equation form a new term arises
+
+\begin{equation}
+    \lap \b E = \mu \epsilon \pds{\b E}{t} + \mu \sigma \pd{\b E}{t}, \and \lap \b B = \mu \epsilon \pds{\b B}{t} + \mu \sigma \pd{\b B}{t}.
+\end{equation}
+
+All that new term changes is the wave number in the plane wave solution to become 
+
+\begin{equation}
+    {k'}^2 = \mu \epsilon\omega^2 + i \mu \sigma \omega = k + i\kappa.
+\end{equation}
+
+We define k and $\kappa$ to be
+
+\begin{equation}
+     k \= \omega\sqrt{\frac{\epsilon\mu}{2}} \9 \sqrt{1 + \9 \frac{\sigma}{\epsilon\omega} \0^2} + 1 \0^{\frac{1}{2}},
+\end{equation}
+
+and
+
+\begin{equation}
+    \kappa \= \omega\sqrt{\frac{\epsilon\mu}{2}} \9 \sqrt{1 + \9 \frac{\sigma}{\epsilon\omega} \0^2} - 1 \0^{\frac{1}{2}}.
+\end{equation}
+
+Now when discussing optics a useful quantity that emerges is the skin depth which is kind of like the time constant for depth of penetration into a conductor. The amplitude of your wave will decrease by a factor of 1/e every
+
+\begin{equation}
+    d \= \frac{1}{\kappa}.
+\end{equation}
+
+If we are instead to write the complex wave vector like
+
+\begin{equation}
+    k' = Ke^{i \phi},
+\end{equation}
+
+then we could find out some interesting physical phenomena about the fields inside the conductor. 
+
+First lets define K and $\phi$;
+
+\begin{equation}
+    K \= \omega \sqrt{\epsilon \mu \sqrt{1 + \9 \frac{\sigma}{\epsilon\omega} \0^2}},
+\end{equation}
+
+and 
+
+\begin{equation}
+    \phi \= \tan^{-1} \frac{\kappa}{k}.
+\end{equation}
+
+Plugging these quantities back into the initial differential equation we see that the magnetic field lags behind the electric field by a factor of $\phi.$ Also the proportionality factor between the fields isn't just c/n, but actually
+
+\begin{equation}
+    \frac{B_0}{E_0} = \sqrt{\epsilon \mu \sqrt{1 + \9 \frac{\sigma}{\epsilon\omega} \0^2}}.
+\end{equation}
+
+Looking at these equation we can see that there is a problem for perfect conductors where the charge density is infinite. In this case the wave is completely reflected and picks up a phase shift of $\pi$.
+
+\subsection{Frequency Dependence of Permittivity}
+
+So far we have assumed that $\epsilon$ and $\mu$ are just strictly scalar quantities. In general though they are more complicated, and one of these complication is that they change depending on the frequency of the light passing through the material. We can thus model them as scalar functions. Physically what happens is the electrons will get excited by different frequencies, and these different excitations cause different levels of damping to occur. We will model electrons as springs. In doing so we can then define the macroscopic polarization $\b P$ to be the real part of
+
+\begin{equation}
+    \b P = \frac{Nq^2}{m} \9 \sum_j \frac{f_j}{w_j^2 - w^2 - i \gamma_j \omega} \0 \b E.
+\end{equation}
+
+Here I have used $f_j$ as the different electrons which have natural frequency $\omega_j$, and damping $\gamma_j$. This complex polarization is proportional to the complex field which allows us to define it through the normal means as well
+
+\begin{equation}
+    \b P = \epsilon_0 \chi_e' \b E,
+\end{equation}
+
+where $\chi_e'$ is the complex susceptibility. Using the manipulations we had before results in a complex dielectric constant
+
+\begin{equation}
+    \epsilon_r' = 1 + \frac{Nq^2}{m} \9 \sum_j \frac{f_j}{w_j^2 - w^2 - i \gamma_j \omega} \0.
+\end{equation}
+
+Looking at this equation we can see that the damping only plays a large role around the natural frequencies of the electrons. We can go through the same tricks as the last subsection and get monochromatic plane waves as solutions to the boundary conditions. Now we will define the absorption coefficient as 
+
+\begin{equation}
+    \alpha \= 2 \kappa,
+\end{equation}
+
+which tells us about how much the wave will become attenuated. Around the resonance the index of refraction will drop suddenly, and this phenomena is called the anomalous dispersion. In this region the material will actually become almost opaque.
+
+If we stay away from resonance and look at transparent media, which normally have natural frequencies in the ultraviolet we can then get the formula for the index of refraction to be 
+
+\begin{equation}
+    1 + \9 \frac{Nq^2}{2m\epsilon_0} \sum_j \frac{f_j}{\omega_j^2} \0  + \omega^2 \9 \frac{Nq^2}{2m\epsilon_0} \sum_j \frac{f_j}{\omega_j^4} \0.
+\end{equation}
+
+Then we can define new variables A and B to make this take the form of Cauchy's formula
+
+\begin{equation}
+    n = 1 + A \9 1 + \frac{B}{\lambda^2} \0.
+\end{equation}
+
+A is the coefficient of refraction while B is the coefficient of dispersion and this formula works best for most gases in visible wavelengths.
+
+\subsection{Guided Waves}
+
+Instead of infinite plane waves, what if our electromagnetic wave is confined to be in some wave guide. For this discussion we will assume the wave guide is a perfect conductor and thus we will use the boundary conditions of such. From working out the solutions to the boundary conditions it becomes apparent that the waves can not be strictly transverse and have some longitudinal component. In fact the transverse components can be found if we only know the longitudinal component. Let us assume that the wave is moving in the $\hb z$ direction. Then we can write the the transverse components as 
+
+\begin{equation}
+\begin{split}
+    & E_x = \frac{i}{(\omega/c)^2 - k^2} \9 k \pd{E_z}{x} + \omega \pd{B_z}{y} \0, \\
+    & E_y = \frac{i}{(\omega/c)^2 - k^2} \9 k \pd{E_z}{y} - \omega \pd{B_z}{x} \0, \\
+    & B_x = \frac{i}{(\omega/c)^2 - k^2} \9 k \pd{B_z}{x} + \frac{\omega}{c^2} \pd{E_z}{y} \0, \\
+    & B_y = \frac{i}{(\omega/c)^2 - k^2} \9 k \pd{B_z}{y} - \frac{\omega}{c^2} \pd{E_z}{x} \0.
+\end{split}
+\end{equation}
+
+Plugging all of this back into Maxwell's equation results in two coupled equations
+
+\begin{equation}
+\begin{split}
+    & \9 \pds{}{x} + \pds{}{y} + (w/c)^2 - k^2 \0 E_z = 0, \\
+    & \9 \pds{}{x} + \pds{}{y} + (w/c)^2 - k^2 \0 B_z = 0.
+\end{split}
+\end{equation}
+
+From here we can now define what TE, TM, and TEM waves are. If the $E_z = 0$, then it is a TE (transverse electric) wave, if $B_z = 0$ then it is a TM (transverse magnetic) wave, and if it is both then it is a TEM wave. TEM waves cannot happen if you are in a hollow wave guide. 
+
+When solving for TE waves in a rectangular wave guide, then the magnetic component will be of the form
+
+\begin{equation}
+    B_z = B_0 \cos(m\pi x/a)\cos(n \pi y/b),
+\end{equation}
+
+which then will be denoted as the TE$_{mn}$ mode. The first index is conventionally related to the bigger of the two dimensions. One of the two indices must be nonzero for TE waves. If the frequency of the light is less than some cutoff frequency $\omega_{mn}$ defined to be
+
+\begin{equation}
+    \omega_{mn} \= c \pi \sqrt{(m/a)^2 + (n/b)^2},
+\end{equation}
+
+then the wave will attenuate exponentially. For the example we are working with, the lowest cutoff frequency is 
+
+\begin{equation}
+    \omega_{10} = c \pi /a.
+\end{equation}
+
+A useful visualization that you c an do in your head is that the electromagnetic wave is travelling at some angle with the wave guide and bouncing back and forth. The allowed wavelengths are those that produce standing waves in the x-y plane. 
+
+An example of when TEM waves are allowed is a coaxial cable. In the solution for the TEM waves, it reduces back down to electrostatics and magnetostatics. Thus this example has already been solved and the solution is simply
+
+\begin{equation}
+\begin{split}
+    & \b E = \frac{A\cos(kz-\omega t)}{s}\hb{s}, \\
+    & \b B = \frac{A\cos(kz-\omega t)}{cs}\hbm{\phi}.
+\end{split}
+\end{equation}
+
+\section{Radiation}
+
+We shall define radiation in this section as the process of the fields taking energy off to infinity due to charges accelerating. Let us say the power radiated through some surface is the surface integral of the Poynting vector, and thus
+
+\begin{equation}
+    P(r,t) = \oint \b S \. d \b a = \frac{1}{\mu_0} \oint (\b E \x \b B) \. d\b a.
+\end{equation}
+
+We want to evaluate this power at the time $t_0$, but these waves left the center at a time $t_0 + \frac{r}{c}$. Thus 
+
+\begin{equation}
+    P_{rad}(t_0) = \lim_{r\to\infty} P \9 r, t_0 + \frac{r}{c} \0.
+\end{equation}
+
+For this value to be finite\footnote{In this context finite means non-zero.} then the fields must fall off faster than 1/r. Since this is not the case in electrostatics nor magnetostatics, there is no radiation to be had. It is only in the electrodynamic case that they arise. 
+
+\subsection{Dipole Radiation}
+
+For this section we are trying to avoid accelerating point charges in favor of dipoles because they are much easier to work with. The model we will use is we have some charges driven between two metal spheres connected by a wire. Let the driving force make the charge move like
+
+\begin{equation}
+    q(t) = q_0 \cos(\omega t).
+\end{equation}
+
+Thus the dipole moment is 
+
+\begin{equation}
+    \b p(t) = p_0 \cos(\omega t) \hb{z},
+\end{equation}
+
+where 
+
+\begin{equation}
+    p_0 \= q_0d.
+\end{equation}
+
+The current through the wire is
+
+\begin{equation}
+    \b I(t) = -q_0 \omega \sin(\omega t) \hb{z}.
+\end{equation}
+
+If we keep causality in mind, and make the following three approximations, 
+
+\begin{equation}
+    d \ll r, \and d \ll \frac{c}{\omega}, \and \frac{c}{\omega} \ll r,
+\end{equation}
+
+then we find the potentials to be
+
+\begin{equation}
+    \phi(r, \theta, t) = -\frac{p_0 \omega}{4 \pi \epsilon_0 c} \9 \frac{\cos \theta}{r} \0 \sin[\omega(t-r/c)],
+\end{equation}
+
+and\footnote{I actually don't use the last approximation in this equation.}
+
+\begin{equation}
+    \b A(r, \theta, t) = -\frac{\mu_0 p_0 \omega}{4 \pi r} \sin[\omega(t-r/c)] \hb{z}.
+\end{equation}
+
+The first approximation was to try and move away from physical dipoles to perfect dipoles. The second approximation just comes from the fact that the frequency is related to distance by the wavelength of the light, and the wavelength is much larger than d. The last approximation is because we are looking at radiation the radiation zone, which for us is towards infinity.
+
+From the potentials the fields can be directly calculated and thus
+
+\begin{equation}
+    \b E = - \frac{\mu_0 p_0 \omega^2}{4 \pi} \9 \frac{\sin\theta}{r} \0 \cos[\omega(t-r/c)] \hbm{\theta},
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B = - \frac{\mu_0 p_0 \omega^2}{4 \pi c} \9 \frac{\sin\theta}{r} \0 \cos[\omega(t-r/c)] \hbm{\phi}.
+\end{equation}
+
+Now we can finally calculate what the Poynting vector is
+
+\begin{equation}
+    \b S(\b r, t) = \frac{\mu_0}{c} \9 \frac{p_0 \omega^2}{4 \pi} \9 \frac{\sin\theta}{r} \0 \cos[\omega(t-r/c)] \0^2 \hb{r}.
+\end{equation}
+
+Time averaging this quantity results in
+
+\begin{equation}
+    \brak{\b S} = \9 \frac{\mu_0 p_0^2 \omega^4}{32\pi c} \0 \frac{\sin^2 \theta}{r}\hb{r},
+\end{equation}
+
+which finally allows us to find what the average radiation. Taking the formula we established at the beginning of the section
+
+\begin{equation}
+    \brak{P} = \frac{\mu_0 p_0^2 \omega^4}{12 \pi c}.
+\end{equation}
+
+\subsection{Magnetic Dipole Radiations}
+
+Instead of the model we used last time, lets just have a wire in the shape of a circle with radius b, and current 
+
+\begin{equation}
+    I(t) = I_0 \cos\omega t.
+\end{equation}
+
+The magnetic dipole is then 
+
+\begin{equation}
+    \b m(t) = m_0 \cos(\omega t) \hb{z},
+\end{equation}
+
+where I have defined $m_0$ to be
+
+\begin{equation}
+    m_0 \= \pi b^2 I_0.
+\end{equation}
+
+I would like to note that the total charge on the loop is zero and thus the scalar potential is zero as well. Using the same approximations as last time but now b plays the role of d, we can solve for the magnetic vector potential. The result is
+
+\begin{equation}
+    \b A(r, \theta, t) = - \frac{\mu_0 \omega}{4 \pi c} \9 \frac{\sin\theta}{r} \0 \sin[\omega (t-r/c)] \hbm{\phi}.
+\end{equation}
+
+From here we calculate the field directly and the result is
+
+\begin{equation}
+    \b E = \frac{\mu_0 m_0 \omega^2}{4 \pi c}\cos[\omega(t-r/c)] \hbm{\phi},
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B = - \frac{\mu_0 m_0 \omega^2}{4 \pi c^2} \9 \frac{\sin\theta}{r} \0 \cos[\omega(t-r/c)]\hbm{\theta}.
+\end{equation}
+
+Following the same method of calculating the average radiation as before we find
+
+\begin{equation}
+    \brak{P} = \frac{\mu_0 m_0^2 \omega^4}{12 \pi c^3}.
+\end{equation}
+
+I would like to note that this is very similar to the equation for the radiation due to the electric dipole. The main difference is there is an extra factor of $1/c^2$. Therefore if they are both present the electric dipole radiation will be the dominant one. It is only in the special example we have created that there is no electric radiation that the radiation due to magnetic dipoles is important.
+
+
+
 
 
 
@@ -1245,9 +1585,6 @@ The first law states that the incident, reflected, and transmitted wave vectors 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %% \appendix
-
-%% \section{}
-%% \label{}
 
 %% References
 %%
