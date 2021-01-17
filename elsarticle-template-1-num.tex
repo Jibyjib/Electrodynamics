@@ -1627,40 +1627,164 @@ I would like to note from the previous section that an electric monopole moment 
 The electric field of for an electron moving in an arbitrary way is 
 
 \begin{equation}
-    \b E
+    \b E(\b r,t) = \k \frac{\r}{(\br \. \b u)^3}[(c^2-v^2)\b u + \br \x ( \b u \x \b a)],
 \end{equation}
 
+where $\b u = c \hr - \b v$. Examining this field, the first term is called the velocity field while the second one is the acceleration field. The acceleration field is the one that will contribute to the radiation in the end and so is sometimes referred to as the radiation field. The reason for this is the velocity field carries around the energy, but does not take it to infinity. 
+
+The magnetic field created by this charge is
+
+\begin{equation}
+    \b B(\b r, t) = \frac{1}{c} \hr \x \b E(\b r, t).
+\end{equation}
+
+and thus we are able to carry out the normal process of figuring out the Poynting and calculating the radiation you would end back up at the Larmor formula if you are travelling at a non-relativistic speed. What if this was at a relativistic speed though?\footnote{I really don't understand why in Griffiths this section becomes before special relativity. I feel like this section should be the last section in the book because we use relativity throughout it as well as go into field equations that he doesn't talk about until later.} The relativistic equation to the Larmor formula is called Li\'enard's generalization and is
+
+\begin{equation}
+    P = \frac{\mu_0 q^2 \gamma^6}{6 \pi c} \9 a^2 - \frac{|\b v \x \b a^2|}{c^2} \0.
+\end{equation}
+
+All of this is talking about the classical way of interpreting bremsstrahlung. 
+
+\subsection{Radiation Reaction}
+
+When a charge accelerates it loses energy and thus does not accelerate at the level that you would anticipate normally. The way to fix this is to say that there exists a backwards force, $\b F_{rad}$. Calculating what this should be, we can set the negative power radiated by the charge to be the power lost due to this force, i.e.
+
+\begin{equation}
+    \b F_{rad} \. \b v = - \frac{\mu_0 q^2 a^2}{6 \pi c}.
+\end{equation}
+ 
+This equation is actually wrong because it ignores the velocity field which tells us energy in the field that is retrievable. To be more specific, you would want to look at how that energy transfer also affects the particle's motion. Let's restrict or view to motions where the particles start and end velocity is the same. That way the energy lost to the field is gained back. In doing so we find the Abraham-Lorentz formula for the radiation reaction force
+
+\begin{equation}
+    \b F_{rad} = \frac{\mu_0 q^2}{6 \pi c} \dot{\b a}.
+\end{equation}
+
+Equating this to Newton's law has disturbing consequences such as breaking causality. This starts to show the breakdown of classical electromagnetism and might be an indicator needing to include quantum mechanics. According to classical electromagnetism the mechanism for this force is actually the force of the charge on itself.\footnote{I am giving no explanation to this at the current time. I really feel like we are pushing classical electromagnetism to its limits when we start talking about self-fields. This is covered in the last chapter of Jackson and I will write more when I get there.}
+
+\section{Electrodynamics and Relativity}
+
+I would like to note that I am not writing an introduction to special relativity. Griffiths does this but I am not going to rehash over a lot of information that is not specific to electrodynamics. Because of this the later half of the chapter is the only one I am going to focus on. Nothing changes when you are talking about our axioms change when talking about special relativity because relativity was brought into play by taking electrodynamics to be the correct version of classical physics and not Newton. It is possible though to use special relativity to gain insight into why certain phenomena occur. Also I will try to write down equations using tensor notation to be able to prepare people to go further in their relativity studies.
 
 
+\subsection{How the Fields Transform}
 
+I will start this section with a small example of how the electric field changes for a parallel plate capacitor. Let there be a parallel plate capacitor which in its rest frame generate an electric field equal to 
 
+\begin{equation}
+    \b E_0 = \frac{\sigma_0}{\epsilon_0}\hb{y}.
+\end{equation}
 
+Charge is conserved no matter the reference frame you are looking at so if we look at a reference frame moving to the right by some factor of v then it will not change the amount of charge on the capacitors. What will change is the distance in between the charges and thus the charge density change by a factor of $\gamma$. Following suit then the field must transform like
 
+\begin{equation}
+\begin{split}
+    & \b E^\bot = \gamma_0 \b E_0^\bot, \\
+    & E^\parallel = E_0^\parallel. 
+\end{split}
+\end{equation}
 
+But what about the general case? Assume that the new frame is moving in the +x direction at some speed v. Skipping the derivation for now the bread and butter of the transform is
 
+\begin{equation}
+\begin{split}
+    & E_x = E_{0x}, \quad B_x = B_{0x}, \\
+    & E_y = \gamma(E_{0y} - v B_{0z}), \quad B_y = \gamma \9 B_{0y} + \frac{v}{c^2} E_{0z} \0, \\
+    & E_z = \gamma(E_{0z} + v B_{0y}), \quad B_z = \gamma \9 B_{0z} - \frac{v}{c^2}E_{0y} \0.
+\end{split}
+\end{equation}
 
+The two cases to note are when one of the fields start out at zero. If the magnetic field initially is zero then the new magnetic field can be related to the new electric field by
 
+\begin{equation}
+    \b B = -\frac{1}{c^2} (\b v \x \b E).
+\end{equation}
 
+Similarly if the electric field is zero initially then the new electric field can be related to the new magnetic field by
 
+\begin{equation}
+    \b E = \b v \x \b B.
+\end{equation}
 
+These results can generalize for more arbitrary motion but that is most easily done with tensors.
 
+\subsection{Tensor Formulation of Electrodynamics}
 
+I will not be deriving a lot of the following equations at this time but it is good to at least have them written down.
 
+To write down the previous transformations all in one go it would be sufficient to find an anti-symmetric, second rank tensor which fulfilled those properties under a Lorentz transformation. This tensor is called the field tensor and is defined as
 
+\begin{equation}
+F^{\mu\nu} =
+\begin{Bmatrix}
+0 & E_x/c & E_y/c & E_z/c \\
+-E_x/c & 0 & B_z & -B_y \\
+-E_y/c & -B_z & 0 & B_x \\
+-E_z/c & B_y & -B_x & 0
+\end{Bmatrix}
+\end{equation}
 
+There is another tensor which can be used which is the dual of the field tensor called, the dual tensor.\footnote{Great name guys. Think this gets to the point. Definitely isn't missing a few extra words and can't get confusing for people.}
 
+\begin{equation}
+G^{\mu\nu} =
+\begin{Bmatrix}
+0 & B_x & B_y & B_z \\
+-B_x & 0 & -E_z/c & E_y/c \\
+-B_y & E_z/c & 0 & -E_x/c \\
+-B_z & -E_y/c & E_x/c & 0
+\end{Bmatrix}
+\end{equation}
 
+What can we use this tensor for now? Well we can define a the current density four vector as 
 
+\begin{equation}
+    J^\mu = (c\rho, \b J),
+\end{equation}
 
+which allows us to write the continuity equation as 
 
+\begin{equation}
+    \partial_\mu J^\mu = 0.
+\end{equation}
 
+Even further Maxwell's laws can be written as just 
 
+\begin{equation}
+    \partial_\nu F^{\mu\nu} = \mu_0 J^\mu, \and \partial_\nu G^{\mu\nu} = 0.
+\end{equation}
 
+The Minkowski force,
 
+\begin{equation}
+    K^\nu = q\eta_\nu F^{\mu\nu},
+\end{equation}
 
+then also brings us back to the Lorentz force law. The potentials can also be combined into a singular four vector
 
+\begin{equation}
+    A^\mu = (V/c, \b A).
+\end{equation}
 
+Using this we can write the field tensor as 
 
+\begin{equation}
+    F^{\mu\nu} = \partial_\mu A^\nu - \partial_\nu A^\mu.
+\end{equation}
+
+Let us now also introduce a new gauge, the Lorentz gauge. This gauge is the one that works perfectly with relativity, while the Coulomb gauge does not. The Lorentz gauge is 
+
+\begin{equation}
+    \partial_\mu A^\mu = 0.
+\end{equation}
+
+If we are in this gauge then we can combine all of Maxwell's equations into a single equation:
+
+\begin{equation}
+    \square^2 A^\mu = - \mu_0 J^\mu.
+\end{equation}
+
+Griffiths calls this "the most elegant formulation of Maxwell's equations."
 
 
 
