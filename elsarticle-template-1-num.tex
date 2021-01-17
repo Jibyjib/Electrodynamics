@@ -1559,6 +1559,91 @@ Following the same method of calculating the average radiation as before we find
 
 I would like to note that this is very similar to the equation for the radiation due to the electric dipole. The main difference is there is an extra factor of $1/c^2$. Therefore if they are both present the electric dipole radiation will be the dominant one. It is only in the special example we have created that there is no electric radiation that the radiation due to magnetic dipoles is important.
 
+\subsection{Radiation from an Arbitrary Source}
+
+To able to do the calculation for this section we need to establish what the potentials would be taking into account causality. The scalar potential is
+
+\begin{equation}
+    V(\b r,t) = \k \int \frac{\rho(\b r', t- \r/c)}{\r}d\tau',
+\end{equation}
+
+and the vector potential is
+
+\begin{equation}
+    \b A(\b r,t) = \m \int \frac{\b J(\b r', t-\r/c)}{\r}d\tau'.
+\end{equation}
+
+We are going use a slightly different set of assumptions this time to take into account the arbitrary time derivatives of the charge distribution. The set of approximations we will use this time is 
+
+\begin{equation*}
+\begin{split}
+    & r' \ll r, \\
+    & r' \ll \frac{c}{|\ddot{\rho}/\dot{\rho}|}, \frac{c}{|\dddot{\rho}/\dot{\rho}|^\frac{1}{2}}, \frac{c}{|\ddddot{\rho}/\dot{\rho}|^\frac{1}{3}}.
+\end{split}
+\end{equation*}
+
+Applying these approximations to the potentials results in
+
+\begin{equation}
+    V(\b r, t) = \k \9 \frac{Q}{r} + \frac{\hb{r} \. \b p(t_0)}{r^2} + \frac{\hb{r} \. \dot{\b p}(t_0)}{rc} \0
+\end{equation}
+
+is the scalar potential while the vector potential is
+
+\begin{equation}
+    \b A(\b r,t) = \m \frac{\dot{\b p}(t_0)}{r}.
+\end{equation}
+
+Now when we calculate the fields we will drop terms that fall of faster than 1/r. Thus the relevant fields we are interested in are
+
+\begin{equation}
+    \b E(\b r,t) = \m \frac{1}{r} [\hb{r} \x (\hb{r} \x \ddot{\b p})],
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B(\b r , t) = -\m \frac{1}{rc}[\hb{r} \x \ddot{\b p}].
+\end{equation}
+
+Following the methods we established in the previous subsection we can calculate the total radiated power
+
+\begin{equation}
+    P_{rad}(t_0) = \frac{\mu_0}{6 \pi c}[\ddot{p}(t_0)]^2.
+\end{equation}
+
+We can calculate the Larmor formula radiation using what we have done so far. Using $\b p(t) = q \b d(t)$ as our dipole moment, then the power radiated should be 
+
+\begin{equation}
+    P = \frac{\mu_0 q^2 a^2}{6 \pi c},
+\end{equation}
+
+where $a^2$ is the square of the acceleration, $\ddot{\b d}$.
+
+I would like to note from the previous section that an electric monopole moment does not radiate. If it were to radiate, it would invalidate conservation of charge. This however does not stop actual monopoles, such as electrons, from radiating if they are accelerating. Accelerating point charges actually pick up higher order moments.
+
+\subsection{Radiation from Point Charges}
+
+The electric field of for an electron moving in an arbitrary way is 
+
+\begin{equation}
+    \b E
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
