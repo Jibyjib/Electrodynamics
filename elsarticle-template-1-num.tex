@@ -167,9 +167,13 @@
 
 \section{Introduction}
 
-I am starting with Griffith's fourth edition of introduction to electrodynamics. I also have volume 1 of the Pauli lectures which goes over electrodynamics. Finally I have Jackson which I do not think I will be using to prep for the qualifying exam. \cite{GriffithsEM} \cite{PauliEM} \cite{Jackson}
+I used Griffith's fourth edition of introduction to electrodynamics to generate this set of notes. \cite{GriffithsEM} I choose this book because I used Griffiths for my undergraduate course. We used the newer version, but this is the one I have a copy of with me. 
 
-I will be skipping mathematical introductions as I will consolidate all of that into a different text at a different time. In this text's current form, I have just been going through Griffiths and copying down a lot of the equations from there. I hope to be able to go back and put more of my voice into these notes once I have finished going over Griffiths' book.
+My next plan is to continue writing notes for other electrodynamics books such as Jackson which I will use this next semester. I would like to note that in my book it seems that radiation and potential and fields chapters were switched. When I start to make these notes more of my own I plan on switching those two sections.
+
+I skipped explaining mathematics because I want to write a completely separate set of notes on that later. I also skipped the intro to relativity because I believe that also belongs in a different set of notes. 
+
+I think what these notes are mainly lacking at the current time are figures, examples, and derivations. I will try to introduce each of these things over time. I hope everyone can benefit from what I have done here so far though. Good luck reading!
 
 \section{Basic Electrostatics}
 
@@ -1564,7 +1568,7 @@ I would like to note that this is very similar to the equation for the radiation
 To able to do the calculation for this section we need to establish what the potentials would be taking into account causality. The scalar potential is
 
 \begin{equation}
-    V(\b r,t) = \k \int \frac{\rho(\b r', t- \r/c)}{\r}d\tau',
+    \phi(\b r,t) = \k \int \frac{\rho(\b r', t- \r/c)}{\r}d\tau',
 \end{equation}
 
 and the vector potential is
@@ -1585,7 +1589,7 @@ We are going use a slightly different set of assumptions this time to take into 
 Applying these approximations to the potentials results in
 
 \begin{equation}
-    V(\b r, t) = \k \9 \frac{Q}{r} + \frac{\hb{r} \. \b p(t_0)}{r^2} + \frac{\hb{r} \. \dot{\b p}(t_0)}{rc} \0
+    \phi(\b r, t) = \k \9 \frac{Q}{r} + \frac{\hb{r} \. \b p(t_0)}{r^2} + \frac{\hb{r} \. \dot{\b p}(t_0)}{rc} \0
 \end{equation}
 
 is the scalar potential while the vector potential is
@@ -1763,7 +1767,7 @@ The Minkowski force,
 then also brings us back to the Lorentz force law. The potentials can also be combined into a singular four vector
 
 \begin{equation}
-    A^\mu = (V/c, \b A).
+    A^\mu = (\phi/c, \b A).
 \end{equation}
 
 Using this we can write the field tensor as 
@@ -1785,6 +1789,129 @@ If we are in this gauge then we can combine all of Maxwell's equations into a si
 \end{equation}
 
 Griffiths calls this "the most elegant formulation of Maxwell's equations."
+
+\section{Potentials and Fields}
+
+This section focuses on solving Maxwell's equations for a given set of sources. We recede back away from tensor notations and try to tie everything up. I would like to note that I believe this section is out of order in Griffiths book. I would swap the location of the radiation section and this section when going through this to be honest and will once I try to make these notes more of my own.
+
+\subsection{Gauge Transformations}
+
+As we move from statics into dynamics how we formulate the electric field in terms of the potentials must change. Since Faraday's Law changes when moving away from statics, let me start there and rederive what the electric field must be equal to:
+
+\begin{equation*}
+\begin{split}
+    & \curl \b E = -\pd{\b B}{t}, \\
+    & \curl \b E = -\pd{(\curl \b A)}{t}, \\
+    & \curl (\b E + \pd{\b A}{t} ) = 0, \\
+    & \b E + \pd{\b A}{t} = -\nabla \phi.
+\end{split}
+\end{equation*}
+
+Therefore the electric field can now be written as
+
+\begin{equation}
+    \b E = -\nabla \phi - \pd{\b A}{t}.
+\end{equation}
+
+If we use this to reduce Maxwell's equations back down to just two using the fields, they become
+
+\begin{equation}
+    \lap \phi + \pd{}{t}(\div \b A) = -\frac{\rho}{\epsilon_0},
+\end{equation}
+
+and
+
+\begin{equation}
+    \9 \lap \b A - \frac{1}{c^2} \pds{\b A}{t} \0 - \nabla \9 \div \b A + \frac{1}{c^2} \pd{\phi}{t} \0 = -\mu_0 \b J.
+\end{equation}
+
+The fields are defined through the derivatives of potentials and so there is some freedom in how we define them. It doesn't have to be just a constant though, it could just be some scalar function. Let the scalar function be denoted $\lambda$, and how it interacts with the potentials is
+
+\begin{equation}
+\begin{split}
+    & \b A' = \b A + \nabla \lambda, \\
+    & \phi' = \phi - \pd{\lambda}{t}.
+\end{split}
+\end{equation}
+
+This function $\lambda$ is called the gauge parameter and the change it creates for the potentials is called a gauge transformation. This gauge can greatly simplify the previous equations.
+
+For example if we are to choose the Coulomb gauge, or sometimes called the radiation gauge, which forces the vector potential to be divergenceless, then Gauss' law reduces back to
+
+\begin{equation}
+    \lap \phi = -\frac{\rho}{\epsilon_0}.
+\end{equation}
+
+A paradox that arises in this gauge is that the scalar potential will instantly respond to the change of the charge distribution, no matter how far away it is. This would seem to contradict relativity, but because the scalar potential is not something you can directly measure, it can not actually allow information to travel faster than light. In this gauge $\phi$ is easy to calculate but $\b A$ is difficult. 
+
+The second most prevalent gauge is called the Lorenz gauge, and is useful for relativistic problems because it preserves Lorentz invariance. The Lorenz gauge is stated as 
+
+\begin{equation}
+    \div \b A = - \frac{1}{c^2}\pd{V}{t}.
+\end{equation}
+
+We saw this gauge in the relativity section before, and so I will not talk to much more about it here. Using the Lorenz gauge though boils down to just solving the inhomogeneous wave equation. We will be assuming the Lorenz gauge from here on out.
+
+\subsection{Retarded Potentials}
+
+Because information takes time to travel from one place to another, namely it travels at the speed of light, having potentials and fields respond instantaneously to the change in charges and currents is inherently wrong. Therefore lets define a retarded time that takes into account the travel of information
+
+\begin{equation}
+    t_r \= t - \frac{\r}{c}.
+\end{equation}
+
+If we just plug these equations into the formulas for the scalar and vector potentials then we get what is called the retarded potentials. Applying this concepts to the fields gets you the wrong answer. Checking that just plugging in the retarded time into the potentials we find that we could have defined an advanced time 
+
+\begin{equation}
+    t_a \= t + \frac{\r}{c},
+\end{equation}
+
+and it would have worked as well. The problem with using advanced time is that it breaks causality which is a big no no.
+
+Now knowing that these potentials work we can just plug them into the equations for the fields and get the solutions. In doing so we run into what is called Jefimenko's equations,
+
+\begin{equation}
+    \b E(\b r,t) = \k \int \9 \frac{\rho(\b r', t_r}{\r^2}\hr + \frac{\dot{\rho}(\b r', t_r)}{c\r}\hr - \frac{\dot{\b J}(\b r', t_r)}{c^2 \r} \0 d\tau',
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B(\b r,t) = \m \int \9 \frac{\b J(\b r', t_r)}{\r^2} + \frac{\dot{\b J}(\b r', t_r}{c\r} \0 \x \hr \hspace{3.5pt} d\tau'.
+\end{equation}
+
+\subsection{Point Charges}
+
+What are the potentials of a moving point charge? Well the answer are the Li\'enard-Wiechert potentials. They are
+
+\begin{equation}
+    \phi(\b r, t) = \k \frac{qc}{\r c - \br \. \b v},
+\end{equation}
+
+and
+
+\begin{equation}
+    \b A(\b r, t) = \frac{\b v}{c^2} \phi(\b r, t).
+\end{equation}
+
+What then are the fields? The fields, if starting from the Li\'enard-Wiechert potentials are
+
+\begin{equation}
+    \b E(\b r,t) \k \frac{q \r}{(\r \. \b u)^3}[(c^2-v^2)\b u + \r \x (\b u \x \b a)],
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B(\b r, t) = \frac{\hr}{c} \x \b E(\b r, t).
+\end{equation}
+
+
+
+
+
+
+
 
 
 
