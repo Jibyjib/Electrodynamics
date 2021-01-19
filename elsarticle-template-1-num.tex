@@ -167,25 +167,30 @@
 
 \section{Introduction}
 
-I used Griffith's fourth edition of introduction to electrodynamics to generate this set of notes. \cite{GriffithsEM} I choose this book because I used Griffiths for my undergraduate course. We used the newer version, but this is the one I have a copy of with me. 
+I used Griffith's fourth edition of introduction to electrodynamics to generate this set of notes \cite{GriffithsEM}. I choose this book because I used Griffiths for my undergraduate course. We used the newer version, but this is the one I have a copy of with me. 
 
-My next plan is to continue writing notes for other electrodynamics books such as Jackson which I will use this next semester. I would like to note that in my book it seems that radiation and potential and fields chapters were switched. When I start to make these notes more of my own I plan on switching those two sections.
+My next plan is to continue writing notes for other electrodynamics books such as Jackson which I will use this next semester. I would like to note that in my book it seems that radiation and potential and fields chapters were switched. I switched that in this current set of notes.
 
 I skipped explaining mathematics because I want to write a completely separate set of notes on that later. I also skipped the intro to relativity because I believe that also belongs in a different set of notes. 
+
+The one of the main notations that I differ from Griffiths on is the symbol for the scalar potential. I use $\phi$, while he uses V. I looked at Jackson and he uses $\Phi$, while Pauli uses $\psi$. It seems there is no strict standard for the variable.
 
 I think what these notes are mainly lacking at the current time are figures, examples, and derivations. I will try to introduce each of these things over time. I hope everyone can benefit from what I have done here so far though. Good luck reading!
 
 \section{Basic Electrostatics}
+
+In electrostatics we have some bread and butter equations. First there will be Coulomb's law which will allow us to do the basic problems involving point charges. The next big equations we will run into is Gauss's law, Laplace's equation, and Poisson's equation. From there we will try to establish boundary conditions as well as explore work and energy for electrostatics. We will end this chapter off which talk about some rudimentary discussion of conductors and capacitors.
+
 
 \subsection{Coulomb's Law}
 
 The basic approach to electrostatics involves Coulomb's law,
 
 \begin{equation}
-    \b{F} = \k\frac{qQ}{\r^2}\hr.
+    \b{F} = \k \frac{qQ}{\r^2} \hr.
 \end{equation}
 
-This approach deals with source charges, which are point like objects that carry some charge, q. $\epsilon_0$ is the permittivity of free space, equal to $8.85 \x 10^{-12} \hspace{3pt} C^2/ N \. m^2 $. This equation is more or less postulating and then checked via experiment. Lets use this as one of our postulates of electrostatics. Once we move to electrodynamics this can be derived from Maxwell's equations. Because this equation is linear with respect to q or Q, then the law of superposition can be used when calculating out the total force on a particular charge.
+This approach deals with source charges, which are point like objects that carry some charge, q. $\epsilon_0$ is the permittivity of free space, equal to $8.85 \x 10^{-12} \hspace{3pt} C^2/( N \. m^2) $. This equation is more or less postulating and then checked via experiment. Lets use this as one of our postulates of electrostatics. Once we move to electrodynamics this can be derived from Maxwell's equations. Because this equation is linear with respect to q or Q, then the law of superposition can be used when calculating out the total force on a particular charge.
 
 Another fundamental equation of electrostatics is the definition of the electric field, 
 
@@ -196,7 +201,7 @@ Another fundamental equation of electrostatics is the definition of the electric
 So combining what we have so far, the electric field for electrostatics is equal to,
 
 \begin{equation}
-    \b{E}(\b{r}) = \frac{1}{4 \pi \epsilon_0} \sum_{i=1}^n \frac{q_i}{\r^2} \hr
+    \b{E}(\b{r}) = \k \sum_{i=1}^n \frac{q_i}{\r^2} \hr
 \end{equation}
 
 This equation can be useful for a small amount of charges, or some very symmetrical cases but for a lot of what is done in electrostatics, you will be facing continuous charge distributions rather than this discrete form.
@@ -207,10 +212,18 @@ This equation can be useful for a small amount of charges, or some very symmetri
 To deal with continuous charge distributions we have to switch out the summation for an integral and what we are left with is,
 
 \begin{equation}
-    \b{E}(\b{r}) = \k \int \frac{1}{\r^2}\hr dq.
+    \b{E}(\b{r}) = \k \int \frac{1}{\r^2}\hr \hspace{3.5pt} dq.
 \end{equation}
 
-That dq though can be a tricky thing to establish. Usually instead of a dq, you would want it in terms of a distance. We can rewrite dq for the one-dimensional case to be equal to $\frac{dq}{dl} dl$. In problems $\frac{dq}{dl}$ is normally given to you as the linear charge distribution $\lambda$. Similarly for two-dimensions and three-dimensions we have $dq = \frac{dq}{da}da$ and $dq = \frac{dq}{d\tau}d\tau$ respectively. $\frac{dq}{da}$ is normally given as the surface charge density $\sigma$ and $\frac{dq}{d\tau}$ is normally given as the volume charge density $\rho$.
+That dq though can be a tricky thing to establish. Instead we would normally know what the charges are evenly distributed, and given what the distribution is. For one dimensional case you will be given the linear charge distribution $\lambda$, for two dimensions the surface charge density $\sigma$, and for three dimensions the volume charge density $\rho$. Writing these in terms of differentials,
+
+\begin{equation}
+\begin{split}
+    & dq = \frac{dq}{d\ell}d\ell = \lambda d\ell, \\
+    & dq = \frac{dq}{da}da = \sigma da, \\
+    & dq = \frac{dq}{d\tau}d\tau = \rho d\tau.
+\end{split}
+\end{equation}
 
 
 An example, is if you have a long wire, the electric field produced by it would be equal to,
@@ -246,7 +259,7 @@ which is also called Gauss's law.
 Useful results that can be calculated from Gauss's law are uniformly charged symmetrical objects. The electric field for a uniformly charged sphere is,
 
 \begin{equation}
-    \b{E}= \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2}\hb{r}.
+    \b{E}= \k \frac{q}{r^2}\hb{r}.
 \end{equation}
 
 For a uniformly charged plane the electric field is,
@@ -419,7 +432,7 @@ and thus the capacitance is,
 What is the capacitance for two concentric spherical metal shells, with radii a and b is another example that is somewhat frequent. For this it can be found that
 
 \begin{equation}
-    C = 4\pi \epsilon_0 \frac{ab}{b-a}.
+    C = 4\pi \epsilon_0 \9 \frac{ab}{b-a} \0.
 \end{equation}
 
 Another thing important for capacitors is the energy stored in one. The work to charge up a capacitor is
@@ -429,6 +442,8 @@ Another thing important for capacitors is the energy stored in one. The work to 
 \end{equation}
 
 \section{Potentials}
+
+The main discussion of this chapter is Laplace's equation. From exploiting the uniqueness of the PDE we will then find a way of finding a solution using the method of images. To end off we will explore multipole expansion and how we can use that to simplify some problems.
 
 \subsection{Laplace's Equation}
 
@@ -459,7 +474,7 @@ Because of the uniqueness theorems we can devise a clever way to solve some prob
 For the example of a single charge +q that is located a distance d above an infinite grounded plane, 
 
 \begin{equation}
-    \phi(x,y,z) = \frac{1}{4 \pi \epsilon_0}(\frac{q}{\sqrt{x^2+y^2+(z-d)^2}} + \frac{-q}{\sqrt{x^2+y^2+(z+d)^2}})
+    \phi(x,y,z) = \k \9 \frac{q}{\sqrt{x^2+y^2+(z-d)^2}} + \frac{-q}{\sqrt{x^2+y^2+(z+d)^2}} \0 .
 \end{equation}
 
 From here you can derive the induced charge distribution $\sigma$, which comes out to be
@@ -481,13 +496,13 @@ What is the potential for some $\rho \neq 0$ but $Q_{enc} = 0$? Well For cases o
 To start out with you would take the explicit formula for the potential would be 
 
 \begin{equation}
-    \phi(\b{r}) = \frac{1}{4\pi \epsilon_0}(\frac{q}{r_+}+\frac{-q}{r_-}).
+    \phi(\b{r}) = \k \9 \frac{q}{\r_+}+\frac{-q}{\r_-} \0 .
 \end{equation}
 
 The next step is to expand out the $r_\pm$.
 
 \begin{equation}
-    r_\pm = r^2 + (d/2)^2 \mp rd\cos\theta.
+    \r_\pm = r^2 + (d/2)^2 \mp rd\cos\theta.
 \end{equation}
 
 By using Taylor expansions and other basic approximation techniques you should end up at
@@ -501,7 +516,7 @@ A trick to see if your calculation is trick to see if your solution is correct, 
 The general equation for the multipole expansion is
 
 \begin{equation}
-    \phi(\b{r}) = \frac{1}{4\pi \epsilon_0} \sum_{n=0}^\infty \frac{1}{r^{n+1}} \int (r')^n P_n(\cos \alpha ) \rho(\b{r}')d\tau'.
+    \phi(\b{r}) = \k \sum_{n=0}^\infty \frac{1}{r^{n+1}} \int (r')^n P_n(\cos \alpha ) \rho(\b{r}')d\tau'.
 \end{equation}
 
 
@@ -514,7 +529,7 @@ Explicitly writing out the monopole and dipole terms,
 and,
 
 \begin{equation}
-    \phi_{dip}(\b{r}) = \frac{1}{4 \pi \epsilon_0}\frac{1}{r^2}\hat{r}\. \int \b{r'}\rho(\b{r'})d\tau'.
+    \phi_{dip}(\b{r}) = \k\frac{\hb{r}}{r^2} \. \int \b{r'}\rho(\b{r'})d\tau'.
 \end{equation}
 
 In the dipole term, the integral is called the dipole moment, and is defined as
@@ -532,6 +547,8 @@ Using this definition we can rewrite the dipole's contribution as
 Note that for physical dipoles, $\b{p} = q\b{d}$ where $\b{d}$ is the separation vector between the positive and negative points.
 
 \section{Electric Fields in Matter}
+
+The main focus of this section is establishing what happens to bulk materials when you introduce an external electric field. We will delve into polarization to start with which will lead into a discussion of the electric displacement field. We will end this chapter on a discussion of dielectrics.
 
 \subsection{Dipoles}
 
@@ -672,6 +689,8 @@ For the special case of a finite parallel plate capacitor, with separation d, an
 
 \section{Magnetostatics}
 
+Finally we are going to move onto magnetism. I will try to harken back to the concepts established for electrostatics throughout the chapter. We will establish the Lorentz force law and then groove on into the Biot-Savart law. Following this discussion we will be able to establish Ampere's law for magnetostatics. Afterwards we will explore the magnetic potential. We will end this chapter talking about boundary conditions and multipole expansion.
+
 \subsection{Lorentz Law}
 
 For electrostatics we required stationary charges, and for magnetostatics we will require steady currents.. The fundamental force law of magnetostatics is called the Lorentz force law. This law was experimentally found so I will write it as a definition,
@@ -727,7 +746,7 @@ The continuity equation stemming from charge conservation is
 The Biot-Savart law is
 
 \begin{equation}
-    \b{B}(\b{r}) = \m \int \frac{\b{I} \x \hat{\r}}{\r^2}dl' = \m I \int \frac{d\bell \x \hr}{\r^2}.
+    \b{B}(\b{r}) = \m \int \frac{\b{I} \x \hr }{\r^2}d\ell' = \m I \int \frac{d\bell \x \hr}{\r^2}.
 \end{equation}
 
 Here I have introduced a new constant, $\mu_0$, which is called the permeability of free space. Unless you are trying to be more precise than $10^{-16}$, you can simply use $\mu_0 = 4\pi \x 10^{-7} H/m$.
@@ -836,6 +855,8 @@ $\b a$ is the vector area of the loop, which for most simple cases is $a\hb{n}$.
 
 \section{Magnetic Fields in Matter}
 
+This section will follow the same formula as electric fields in matter. We will first discuss magnetic dipoles and move into magnetization. From there we can jive on into the magnetic auxiliary field. We will end this chapter talking about effects of media.
+
 \subsection{Dipoles}
 
 What do we mean when we call something magnetized? This is just lay speak for saying something is magnetically polarized. There are three main types of ways an object can be magnetized. First there are paramagnets which have a magnetization in the same direction of $\b B$, diamagnets which are in the opposite direction of $\b B$, and ferromagnets whose direction is based off the history of magnetic fields that have been applied over time, not just the current one.
@@ -885,7 +906,7 @@ Just like in electrostatics there is a secondary field that takes account for th
 Then using the definition of $\b J_b$ we used earlier and solving for $\b J_f$ we arrive at 
 
 \begin{equation}
-    \curl ( \frac{1}{\mu_0}\b B - \b M) = \b J_f.
+    \curl \9 \frac{1}{\mu_0}\b B - \b M \0 = \b J_f.
 \end{equation}
 
 Now we can use this to define the auxillary field,
@@ -928,7 +949,7 @@ and we will call it the permeability of the material. We can thus draw the paral
 
 \section{Electrodynamics}
 
-Everything we have done so far has consisted of either static charges or steady currents. What if this is not the case though? Well an interesting phenomena arises that allows us to combine the theory of the electricity and magnetism into one, electromagnetism. This is where the fun begins!
+Everything we have done so far has consisted of either static charges or steady currents. What if this is not the case though? Well an interesting phenomena arises that allows us to combine the theory of the electricity and magnetism into one, electromagnetism. This is where the fun begins! We will start with a generalization of Ohm's law, and then move onto Faraday's law for dynamical cases. We will end this section finally establishing Maxwell's equations.
 
 \subsection{Ohm's Law}
 
@@ -1054,12 +1075,23 @@ Maxwell called this fix the displacement current and defined it as
     \b J_d \= \epsilon_0 \pd{\b E}{t} = \pd{\b D}{t}.
 \end{equation}
 
-Now connecting all of the different phenomena and adding this fix fully unifies electricity and magnetism together. We can take these four equations as axioms for theoretical classical electrodynamics. If we include in another axiom, the Lorentz force law, then we can derive the rest of classical electrodynamics. Pretty nifty huh? Well we can push the symmetry of these equations even further if we assumed magnetic monopoles do exist. Then Maxwell's equations would read
+Now connecting all of the different phenomena and adding this fix fully unifies electricity and magnetism together. To explicitly write out all of Maxwell's equations:
+
+\begin{equation}
+\begin{split}
+    & \div \b E  = \frac{\rho}{\epsilon_0} \hspace{97pt} \text{Gauss's Law}\\
+    & \curl \b E  = - \pd{\b B}{t} \hspace{75pt} \text{Faraday's Law} \\
+    & \div \b B  = 0, \hspace{98pt} \text{No Name}\\
+    & \curl \b B  = -\mu_0 \b J_e - \mu_0\epsilon_0\pd{\b E}{t}, \quad \text{Ampere's Law with Maxwell's Fix}\\
+\end{split}
+\end{equation}
+
+We can take these four equations as axioms for theoretical classical electrodynamics. If we include in another axiom, the Lorentz force law, then we can derive the rest of classical electrodynamics. Pretty nifty huh? Well we can push the symmetry of these equations even further if we assumed magnetic monopoles do exist. Then Maxwell's equations would read
 
 \begin{equation}
 \begin{split}
         & \div \b E  = \frac{\rho_e}{\epsilon_0}, \hspace{25.50pt} \curl \b E  = -\mu_0 \b J_m - \pd{\b B}{t} \\
-        & \div \b B  = \mu_0 \rho_m, \quad  \curl \b B  = -\mu_0 \b J_e - \mu_0\epsilon_0\pd{\b E}{t}\\
+        & \div \b B  = \mu_0 \rho_m, \quad  \curl \b B  = -\mu_0 \b J_e - \mu_0\epsilon_0\pd{\b E}{t}
 \end{split}
 \end{equation}
 
@@ -1073,7 +1105,7 @@ We have run into a conservation law already, the continuity equation,
      \pd{\rho}{t} = -\div \b J.
 \end{equation}
 
-This tells us that there is a local charge conservation, and this is baked into Maxwell's equations. Remember, I said that the only axioms we need are Maxwell's equations and the Lorentz force law, so the local continuity of charge must stem from just those five equations. We want to derive similar equations for all of the other quantities that are normally conserved such as energy, momentum, and angular momentum.
+This tells us that there is a local charge conservation, and this is baked into Maxwell's equations. Remember, I said that the only axioms we need are Maxwell's equations and the Lorentz force law, so the local continuity of charge must stem from just those five equations. We want to derive similar equations for all of the other quantities that are normally conserved such as energy, momentum, and angular momentum. Along the way we will introduce the Maxwell stress tensor.
 
 
 \subsection{Conservation of Energy}
@@ -1093,7 +1125,7 @@ Thus the energy density is
 This is only one half of a continuity equation though as it represents an energy "charge" density. What is the energy "current?" Well from Maxwell's equations we can derive Poynting's theorem,
 
 \begin{equation}
-    \td{W}{t} = - \td{}{t} \int_V \frac{1}{2}(\epsilon_0 E^2 + \frac{1}{\mu_0} B^2) d\tau - \frac{1}{\mu_0} \oint_S (\b E \x \b B) \. d\b a.
+    \td{W}{t} = - \td{}{t} \int_V \frac{1}{2} \9 \epsilon_0 E^2 + \frac{1}{\mu_0} B^2 \0 d\tau - \frac{1}{\mu_0} \oint_S (\b E \x \b B) \. d\b a.
 \end{equation}
 
 This is simply an analogy to the work energy theorem of classical mechanics. If we look at the second integral, we can define a new vector called the Poynting vector equal to
@@ -1115,7 +1147,7 @@ If you look strictly at the particles in electrodynamics, it would appear they v
 To carry out the calculations needed we are going to define the Maxwell stress tensor.\footnote{When I was first learning about this tensor my group of friends all joked that is called the Maxwell stress tensor because of how much stress it causes to undergraduates haha.} When I first was introduced to it I thought it was just a big nasty mess. Let's define the Maxwell stress tensor as
 
 \begin{equation}
-    T_{ij} \= \epsilon_0 (E_iE_j - \frac{1}{2}\delta_{ij}E^2) + \frac{1}{\mu_0}(B_iB_j - \frac{1}{2}\delta_{ij}B^2).
+    T_{ij} \= \epsilon_0 \9 E_iE_j - \frac{1}{2}\delta_{ij}E^2 \0 + \frac{1}{\mu_0} \9 B_iB_j - \frac{1}{2}\delta_{ij}B^2 \0 .
 \end{equation}
 
 Using this object we can write the total electromagnetic force on a set of charges as 
@@ -1152,6 +1184,8 @@ From here we can define angular momentum from the usual means as
 Angular momentum unfortunately does not have a nice neat and tidy continuity equation.\footnote{:(.}
 
 \section{Electromagnetic Waves}
+
+In this section we will try to decouple Maxwell's equations and along the way find ourselves with two wave equations. We will explore the physics of this to establish the theory of light as an electromagnetic waves. We will look at how these waves interact with boundaries and media. The end of this section explores guided waves, particularly in a rectangular wave guide.
 
 \subsection{Electromagnetic Waves in Vacuum}
 
@@ -1212,7 +1246,7 @@ All of these results transfer over to if light is placed in matter with the simp
 When talking about the reflection and transmission of waves let a subscripts I, R, T represent the incident, reflected, and transmitted portions of the quantities. If the plane comes at a boundary at normal incidence then the reflection coefficient is 
 
 \begin{equation}
-    R \= \frac{I_R}{I_I} = (\frac{n_1 - n_2}{n_1+ n_2})^2,
+    R \= \frac{I_R}{I_I} = \9 \frac{n_1 - n_2}{n_1+ n_2} \0 ^2,
 \end{equation}
 
 where I is the is intensity of the wave. The transmission coefficient\footnote{These are very similar to a lot of wave mechanics problems such as in classical mechanics or quantum mechanics.} is
@@ -1252,7 +1286,7 @@ This allows us to concisely write Fresnel's equations for polarization in the pl
 Solving this for normal incidence we can recover the formula for Brewster's angle which in the most general form is
 
 \begin{equation}
-    \sin^2\theta_B = \frac{1-\beta^2}{(n_1/n_2 -\beta^2}.
+    \sin^2\theta_B = \frac{1-\beta^2}{(n_1/n_2 -\beta^2)}.
 \end{equation}
 
 Making the assumption that $\mu_r$ for both material is roughly equal to one allows us to recover the simplified version of Brewster's angle
@@ -1425,25 +1459,266 @@ An example of when TEM waves are allowed is a coaxial cable. In the solution for
 \end{split}
 \end{equation}
 
+\section{Potentials and Fields}
+
+In this chapter we will establish what a gauge transformation is, and discuss the main two gauges.\footnote{I actually have switched the location of this chapter, and the radiation section compared to the version of Griffiths I have. I honestly think it must have been a misprint because it does not make sense how it was set up.} We will then discuss how, when taking into account that information travels at an finite speed, how the potentials and fields change. Finally we will look into applying the equations to point charges.
+
+\subsection{Gauge Transformations}
+
+As we move from statics into dynamics how we formulate the electric field in terms of the potentials must change. Since Faraday's Law changes when moving away from statics, let me start there and rederive what the electric field must be equal to:
+
+\begin{equation*}
+\begin{split}
+    & \curl \b E = -\pd{\b B}{t}, \\
+    & \quad \hspace{23pt} = -\pd{(\curl \b A)}{t}, \\
+    & \curl (\b E + \pd{\b A}{t} ) = 0, \\
+    & \b E + \pd{\b A}{t} = -\nabla \phi.
+\end{split}
+\end{equation*}
+
+Therefore the electric field can now be written as
+
+\begin{equation}
+    \b E = -\nabla \phi - \pd{\b A}{t}.
+\end{equation}
+
+If we use this to reduce Maxwell's equations back down to just two using the fields, they become
+
+\begin{equation}
+    \lap \phi + \pd{}{t}(\div \b A) = -\frac{\rho}{\epsilon_0},
+\end{equation}
+
+and
+
+\begin{equation}
+    \9 \lap \b A - \frac{1}{c^2} \pds{\b A}{t} \0 - \nabla \9 \div \b A + \frac{1}{c^2} \pd{\phi}{t} \0 = -\mu_0 \b J.
+\end{equation}
+
+The fields are defined through the derivatives of potentials and so there is some freedom in how we define them. It doesn't have to be just a constant though, it could just be some scalar function. Let the scalar function be denoted $\lambda$, and how it interacts with the potentials is
+
+\begin{equation}
+\begin{split}
+    & \b A' = \b A + \nabla \lambda, \\
+    & \phi' = \phi - \pd{\lambda}{t}.
+\end{split}
+\end{equation}
+
+This function $\lambda$ is called the gauge parameter and the change it creates for the potentials is called a gauge transformation. This gauge can greatly simplify the previous equations.
+
+For example if we are to choose the Coulomb gauge, or sometimes called the radiation gauge, which forces the vector potential to be divergenceless, then Gauss' law reduces back to
+
+\begin{equation}
+    \lap \phi = -\frac{\rho}{\epsilon_0}.
+\end{equation}
+
+A paradox that arises in this gauge is that the scalar potential will instantly respond to the change of the charge distribution, no matter how far away it is. This would seem to contradict relativity, but because the scalar potential is not something you can directly measure, it can not actually allow information to travel faster than light. In this gauge $\phi$ is easy to calculate but $\b A$ is difficult. 
+
+The second most prevalent gauge is called the Lorenz gauge, and is useful for relativistic problems because it preserves Lorentz invariance. The Lorenz gauge is stated as 
+
+\begin{equation}
+    \div \b A = - \frac{1}{c^2}\pd{\phi}{t}.
+\end{equation}
+
+We saw this gauge in the relativity section before, and so I will not talk to much more about it here. Using the Lorenz gauge though boils down to just solving the inhomogeneous wave equation. We will be assuming the Lorenz gauge from here on out.
+
+\subsection{Retarded Potentials}
+
+Because information takes time to travel from one place to another, namely it travels at the speed of light, having potentials and fields respond instantaneously to the change in charges and currents is inherently wrong. Therefore lets define a retarded time that takes into account the travel of information
+
+\begin{equation}
+    t_r \= t - \frac{\r}{c}.
+\end{equation}
+
+If we just plug these equations into the formulas for the scalar and vector potentials then we get what is called the retarded potentials. Applying this concepts to the fields gets you the wrong answer. Checking that just plugging in the retarded time into the potentials we find that we could have defined an advanced time 
+
+\begin{equation}
+    t_a \= t + \frac{\r}{c},
+\end{equation}
+
+and it would have worked as well. The problem with using advanced time is that it breaks causality which is a big no no.
+
+Now knowing that these potentials work we can just plug them into the equations for the fields and get the solutions. In doing so we run into what is called Jefimenko's equations,
+
+\begin{equation}
+    \b E(\b r,t) = \k \int \9 \frac{\rho(\b r', t_r}{\r^2}\hr + \frac{\dot{\rho}(\b r', t_r)}{c\r}\hr - \frac{\dot{\b J}(\b r', t_r)}{c^2 \r} \0 d\tau',
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B(\b r,t) = \m \int \9 \frac{\b J(\b r', t_r)}{\r^2} + \frac{\dot{\b J}(\b r', t_r}{c\r} \0 \x \hr \hspace{3.5pt} d\tau'.
+\end{equation}
+
+\subsection{Point Charges}
+
+What are the potentials of a moving point charge? Well the answers are the Li\'enard-Wiechert potentials. We could try to introduce some sort of handwavey geometrical argument to derive these, but instead I will try to derive them from a distributional point of view.\footnote{When I say "I will," I mean I will do that later when I have more time.}
+
+\begin{equation}
+    \phi(\b r, t) = \k \frac{qc}{\r c - \br \. \b v},
+\end{equation}
+
+and
+
+\begin{equation}
+    \b A(\b r, t) = \frac{\b v}{c^2} \phi(\b r, t).
+\end{equation}
+
+We can use the Li\'enard-Wiechert potentials and solve for the fields directly. The results are
+
+\begin{equation}
+    \b E(\b r,t) \k \frac{q \r}{(\br \. \b u)^3}[(c^2-v^2)\b u + \r \x (\b u \x \b a)],
+\end{equation}
+
+and
+
+\begin{equation}
+    \b B(\b r, t) = \frac{\hr}{c} \x \b E(\b r, t).
+\end{equation}
+
+Lets examine the electric field a little closer. The first time is called the velocity field, and it's main use is swapping the energy between the field and the particles. The second term is called the acceleration term and it introduces a way for energy to be loss from the system, i.e. radiation.
+
+\section{Electrodynamics and Relativity}
+
+I would like to note that I am not writing an introduction to special relativity. Griffiths does this but I am not going to rehash over a lot of information that is not specific to electrodynamics. Because of this the later half of the chapter is the only one I am going to focus on. Nothing changes when you are talking about our axioms change when talking about special relativity because relativity was brought into play by taking electrodynamics to be the correct version of classical physics and not Newton. It is possible though to use special relativity to gain insight into why certain phenomena occur. Also I will try to write down equations using tensor notation to be able to prepare people to go further in their relativity studies.
+
+\subsection{How the Fields Transform}
+
+I will start this section with a small example of how the electric field changes for a parallel plate capacitor. Let there be a parallel plate capacitor which in its rest frame generate an electric field equal to 
+
+\begin{equation}
+    \b E_0 = \frac{\sigma_0}{\epsilon_0}\hb{y}.
+\end{equation}
+
+Charge is conserved no matter the reference frame you are looking at so if we look at a reference frame moving to the right by some factor of v then it will not change the amount of charge on the capacitors. What will change is the distance in between the charges and thus the charge density change by a factor of $\gamma$. Following suit then the field must transform like
+
+\begin{equation}
+\begin{split}
+    & \b E^\bot = \gamma_0 \b E_0^\bot, \\
+    & E^\parallel = E_0^\parallel. 
+\end{split}
+\end{equation}
+
+But what about the general case? Assume that the new frame is moving in the +x direction at some speed v. Skipping the derivation for now the bread and butter of the transform is
+
+\begin{equation}
+\begin{split}
+    & E_x = E_{0x}, \quad B_x = B_{0x}, \\
+    & E_y = \gamma(E_{0y} - v B_{0z}), \quad B_y = \gamma \9 B_{0y} + \frac{v}{c^2} E_{0z} \0, \\
+    & E_z = \gamma(E_{0z} + v B_{0y}), \quad B_z = \gamma \9 B_{0z} - \frac{v}{c^2}E_{0y} \0.
+\end{split}
+\end{equation}
+
+The two cases to note are when one of the fields start out at zero. If the magnetic field initially is zero then the new magnetic field can be related to the new electric field by
+
+\begin{equation}
+    \b B = -\frac{1}{c^2} (\b v \x \b E).
+\end{equation}
+
+Similarly if the electric field is zero initially then the new electric field can be related to the new magnetic field by
+
+\begin{equation}
+    \b E = \b v \x \b B.
+\end{equation}
+
+These results can generalize for more arbitrary motion but that is most easily done with tensors.
+
+\subsection{Tensor Formulation of Electrodynamics}
+
+I will not be deriving a lot of the following equations at this time but it is good to at least have them written down.
+
+To write down the previous transformations all in one go it would be sufficient to find an anti-symmetric, second rank tensor which fulfilled those properties under a Lorentz transformation. This tensor is called the field tensor and is defined as
+
+\begin{equation}
+F^{\mu\nu} =
+\begin{pmatrix}
+0 & E_x/c & E_y/c & E_z/c \\
+-E_x/c & 0 & B_z & -B_y \\
+-E_y/c & -B_z & 0 & B_x \\
+-E_z/c & B_y & -B_x & 0
+\end{pmatrix}
+\end{equation}
+
+There is another tensor which can be used which is the dual of the field tensor called, the dual tensor.\footnote{Great name guys. Think this gets to the point. Definitely isn't missing a few extra words and can't get confusing for people.}
+
+\begin{equation}
+G^{\mu\nu} =
+\begin{pmatrix}
+0 & B_x & B_y & B_z \\
+-B_x & 0 & -E_z/c & E_y/c \\
+-B_y & E_z/c & 0 & -E_x/c \\
+-B_z & -E_y/c & E_x/c & 0
+\end{pmatrix}
+\end{equation}
+
+What can we use this tensor for now? Well we can define a the current density four vector as 
+
+\begin{equation}
+    J^\mu = (c\rho, \b J),
+\end{equation}
+
+which allows us to write the continuity equation as 
+
+\begin{equation}
+    \partial_\mu J^\mu = 0.
+\end{equation}
+
+Even further Maxwell's laws can be written as just 
+
+\begin{equation}
+    \partial_\nu F^{\mu\nu} = \mu_0 J^\mu, \and \partial_\nu G^{\mu\nu} = 0.
+\end{equation}
+
+The Minkowski force,
+
+\begin{equation}
+    K^\nu = q\eta_\nu F^{\mu\nu},
+\end{equation}
+
+then also brings us back to the Lorentz force law. The potentials can also be combined into a singular four vector
+
+\begin{equation}
+    A^\mu = (\phi/c, \b A).
+\end{equation}
+
+Using this we can write the field tensor as 
+
+\begin{equation}
+    F^{\mu\nu} = \partial_\mu A^\nu - \partial_\nu A^\mu.
+\end{equation}
+
+Let us now also introduce a new gauge, the Lorentz gauge. This gauge is the one that works perfectly with relativity, while the Coulomb gauge does not. The Lorentz gauge is 
+
+\begin{equation}
+    \partial_\mu A^\mu = 0.
+\end{equation}
+
+If we are in this gauge then we can combine all of Maxwell's equations into a single equation:
+
+\begin{equation}
+    \square^2 A^\mu = - \mu_0 J^\mu.
+\end{equation}
+
+Griffiths calls this "the most elegant formulation of Maxwell's equations."
+
 \section{Radiation}
 
-We shall define radiation in this section as the process of the fields taking energy off to infinity due to charges accelerating. Let us say the power radiated through some surface is the surface integral of the Poynting vector, and thus
+We shall define radiation in this section as the process of the fields taking energy off to infinity due to charges accelerating.\footnote{I will also note again I switched this chapter and the potentials and fields chapter.} Let us say the power radiated through some surface is the surface integral of the Poynting vector, and thus
 
 \begin{equation}
     P(r,t) = \oint \b S \. d \b a = \frac{1}{\mu_0} \oint (\b E \x \b B) \. d\b a.
 \end{equation}
 
-We want to evaluate this power at the time $t_0$, but these waves left the center at a time $t_0 + \frac{r}{c}$. Thus 
+We want to evaluate this power at the time $t_0$, but these waves left the center at a time $t_0 - \frac{r}{c}$. Thus 
 
 \begin{equation}
     P_{rad}(t_0) = \lim_{r\to\infty} P \9 r, t_0 + \frac{r}{c} \0.
 \end{equation}
 
-For this value to be finite\footnote{In this context finite means non-zero.} then the fields must fall off faster than 1/r. Since this is not the case in electrostatics nor magnetostatics, there is no radiation to be had. It is only in the electrodynamic case that they arise. 
+For this value to be finite\footnote{In this context finite means non-zero.} then the fields must fall off faster than 1/r. Since this is not the case in electrostatics nor magnetostatics, there is no radiation to be had. It is only in the electrodynamic case that they arise. To start we will explore this radiation from electric and magnetic dipoles and compare the two cases. Then we will look at how to formulate the equations for an arbitrary source. We will then apply the concepts we have learned to point charges. We will end this chapter, and the entirety of these notes at this point, on a brief discussion of radiation reaction, or in other words self-force.
 
 \subsection{Dipole Radiation}
 
-For this section we are trying to avoid accelerating point charges in favor of dipoles because they are much easier to work with. The model we will use is we have some charges driven between two metal spheres connected by a wire. Let the driving force make the charge move like
+For this section we are trying to avoid accelerating point charges in favor of dipoles because they are much easier to work with. The model we will use is charges driven between two metal spheres connected by a wire. Let the driving force make the charge move like
 
 \begin{equation}
     q(t) = q_0 \cos(\omega t).
@@ -1479,7 +1754,7 @@ then we find the potentials to be
     \phi(r, \theta, t) = -\frac{p_0 \omega}{4 \pi \epsilon_0 c} \9 \frac{\cos \theta}{r} \0 \sin[\omega(t-r/c)],
 \end{equation}
 
-and\footnote{I actually don't use the last approximation in this equation.}
+and\footnote{I actually don't use the last approximation in the equation for the vector potential.}
 
 \begin{equation}
     \b A(r, \theta, t) = -\frac{\mu_0 p_0 \omega}{4 \pi r} \sin[\omega(t-r/c)] \hb{z}.
@@ -1634,7 +1909,7 @@ The electric field of for an electron moving in an arbitrary way is
     \b E(\b r,t) = \k \frac{\r}{(\br \. \b u)^3}[(c^2-v^2)\b u + \br \x ( \b u \x \b a)],
 \end{equation}
 
-where $\b u = c \hr - \b v$. Examining this field, the first term is called the velocity field while the second one is the acceleration field. The acceleration field is the one that will contribute to the radiation in the end and so is sometimes referred to as the radiation field. The reason for this is the velocity field carries around the energy, but does not take it to infinity. 
+where $\b u = c \hr - \b v$. If we recall from the potentials and fields chapter, we will remember this field is broken up into the velocity and acceleration fields. The acceleration field is the one that will contribute to the radiation in the end and so is sometimes referred to as the radiation field. The reason for this is the velocity field carries around the energy, but does not take it to infinity. 
 
 The magnetic field created by this charge is
 
@@ -1642,13 +1917,13 @@ The magnetic field created by this charge is
     \b B(\b r, t) = \frac{1}{c} \hr \x \b E(\b r, t).
 \end{equation}
 
-and thus we are able to carry out the normal process of figuring out the Poynting and calculating the radiation you would end back up at the Larmor formula if you are travelling at a non-relativistic speed. What if this was at a relativistic speed though?\footnote{I really don't understand why in Griffiths this section becomes before special relativity. I feel like this section should be the last section in the book because we use relativity throughout it as well as go into field equations that he doesn't talk about until later.} The relativistic equation to the Larmor formula is called Li\'enard's generalization and is
+and thus we are able to carry out the normal process of figuring out the Poynting and calculating the radiation you would end back up at the Larmor formula if you are travelling at a non-relativistic speed. What if this was at a relativistic speed though? The relativistic equation to the Larmor formula is called Li\'enard's generalization and is
 
 \begin{equation}
     P = \frac{\mu_0 q^2 \gamma^6}{6 \pi c} \9 a^2 - \frac{|\b v \x \b a^2|}{c^2} \0.
 \end{equation}
 
-All of this is talking about the classical way of interpreting bremsstrahlung. 
+This is talking about the classical way of interpreting bremsstrahlung.
 
 \subsection{Radiation Reaction}
 
@@ -1665,248 +1940,6 @@ This equation is actually wrong because it ignores the velocity field which tell
 \end{equation}
 
 Equating this to Newton's law has disturbing consequences such as breaking causality. This starts to show the breakdown of classical electromagnetism and might be an indicator needing to include quantum mechanics. According to classical electromagnetism the mechanism for this force is actually the force of the charge on itself.\footnote{I am giving no explanation to this at the current time. I really feel like we are pushing classical electromagnetism to its limits when we start talking about self-fields. This is covered in the last chapter of Jackson and I will write more when I get there.}
-
-\section{Electrodynamics and Relativity}
-
-I would like to note that I am not writing an introduction to special relativity. Griffiths does this but I am not going to rehash over a lot of information that is not specific to electrodynamics. Because of this the later half of the chapter is the only one I am going to focus on. Nothing changes when you are talking about our axioms change when talking about special relativity because relativity was brought into play by taking electrodynamics to be the correct version of classical physics and not Newton. It is possible though to use special relativity to gain insight into why certain phenomena occur. Also I will try to write down equations using tensor notation to be able to prepare people to go further in their relativity studies.
-
-
-\subsection{How the Fields Transform}
-
-I will start this section with a small example of how the electric field changes for a parallel plate capacitor. Let there be a parallel plate capacitor which in its rest frame generate an electric field equal to 
-
-\begin{equation}
-    \b E_0 = \frac{\sigma_0}{\epsilon_0}\hb{y}.
-\end{equation}
-
-Charge is conserved no matter the reference frame you are looking at so if we look at a reference frame moving to the right by some factor of v then it will not change the amount of charge on the capacitors. What will change is the distance in between the charges and thus the charge density change by a factor of $\gamma$. Following suit then the field must transform like
-
-\begin{equation}
-\begin{split}
-    & \b E^\bot = \gamma_0 \b E_0^\bot, \\
-    & E^\parallel = E_0^\parallel. 
-\end{split}
-\end{equation}
-
-But what about the general case? Assume that the new frame is moving in the +x direction at some speed v. Skipping the derivation for now the bread and butter of the transform is
-
-\begin{equation}
-\begin{split}
-    & E_x = E_{0x}, \quad B_x = B_{0x}, \\
-    & E_y = \gamma(E_{0y} - v B_{0z}), \quad B_y = \gamma \9 B_{0y} + \frac{v}{c^2} E_{0z} \0, \\
-    & E_z = \gamma(E_{0z} + v B_{0y}), \quad B_z = \gamma \9 B_{0z} - \frac{v}{c^2}E_{0y} \0.
-\end{split}
-\end{equation}
-
-The two cases to note are when one of the fields start out at zero. If the magnetic field initially is zero then the new magnetic field can be related to the new electric field by
-
-\begin{equation}
-    \b B = -\frac{1}{c^2} (\b v \x \b E).
-\end{equation}
-
-Similarly if the electric field is zero initially then the new electric field can be related to the new magnetic field by
-
-\begin{equation}
-    \b E = \b v \x \b B.
-\end{equation}
-
-These results can generalize for more arbitrary motion but that is most easily done with tensors.
-
-\subsection{Tensor Formulation of Electrodynamics}
-
-I will not be deriving a lot of the following equations at this time but it is good to at least have them written down.
-
-To write down the previous transformations all in one go it would be sufficient to find an anti-symmetric, second rank tensor which fulfilled those properties under a Lorentz transformation. This tensor is called the field tensor and is defined as
-
-\begin{equation}
-F^{\mu\nu} =
-\begin{Bmatrix}
-0 & E_x/c & E_y/c & E_z/c \\
--E_x/c & 0 & B_z & -B_y \\
--E_y/c & -B_z & 0 & B_x \\
--E_z/c & B_y & -B_x & 0
-\end{Bmatrix}
-\end{equation}
-
-There is another tensor which can be used which is the dual of the field tensor called, the dual tensor.\footnote{Great name guys. Think this gets to the point. Definitely isn't missing a few extra words and can't get confusing for people.}
-
-\begin{equation}
-G^{\mu\nu} =
-\begin{Bmatrix}
-0 & B_x & B_y & B_z \\
--B_x & 0 & -E_z/c & E_y/c \\
--B_y & E_z/c & 0 & -E_x/c \\
--B_z & -E_y/c & E_x/c & 0
-\end{Bmatrix}
-\end{equation}
-
-What can we use this tensor for now? Well we can define a the current density four vector as 
-
-\begin{equation}
-    J^\mu = (c\rho, \b J),
-\end{equation}
-
-which allows us to write the continuity equation as 
-
-\begin{equation}
-    \partial_\mu J^\mu = 0.
-\end{equation}
-
-Even further Maxwell's laws can be written as just 
-
-\begin{equation}
-    \partial_\nu F^{\mu\nu} = \mu_0 J^\mu, \and \partial_\nu G^{\mu\nu} = 0.
-\end{equation}
-
-The Minkowski force,
-
-\begin{equation}
-    K^\nu = q\eta_\nu F^{\mu\nu},
-\end{equation}
-
-then also brings us back to the Lorentz force law. The potentials can also be combined into a singular four vector
-
-\begin{equation}
-    A^\mu = (\phi/c, \b A).
-\end{equation}
-
-Using this we can write the field tensor as 
-
-\begin{equation}
-    F^{\mu\nu} = \partial_\mu A^\nu - \partial_\nu A^\mu.
-\end{equation}
-
-Let us now also introduce a new gauge, the Lorentz gauge. This gauge is the one that works perfectly with relativity, while the Coulomb gauge does not. The Lorentz gauge is 
-
-\begin{equation}
-    \partial_\mu A^\mu = 0.
-\end{equation}
-
-If we are in this gauge then we can combine all of Maxwell's equations into a single equation:
-
-\begin{equation}
-    \square^2 A^\mu = - \mu_0 J^\mu.
-\end{equation}
-
-Griffiths calls this "the most elegant formulation of Maxwell's equations."
-
-\section{Potentials and Fields}
-
-This section focuses on solving Maxwell's equations for a given set of sources. We recede back away from tensor notations and try to tie everything up. I would like to note that I believe this section is out of order in Griffiths book. I would swap the location of the radiation section and this section when going through this to be honest and will once I try to make these notes more of my own.
-
-\subsection{Gauge Transformations}
-
-As we move from statics into dynamics how we formulate the electric field in terms of the potentials must change. Since Faraday's Law changes when moving away from statics, let me start there and rederive what the electric field must be equal to:
-
-\begin{equation*}
-\begin{split}
-    & \curl \b E = -\pd{\b B}{t}, \\
-    & \curl \b E = -\pd{(\curl \b A)}{t}, \\
-    & \curl (\b E + \pd{\b A}{t} ) = 0, \\
-    & \b E + \pd{\b A}{t} = -\nabla \phi.
-\end{split}
-\end{equation*}
-
-Therefore the electric field can now be written as
-
-\begin{equation}
-    \b E = -\nabla \phi - \pd{\b A}{t}.
-\end{equation}
-
-If we use this to reduce Maxwell's equations back down to just two using the fields, they become
-
-\begin{equation}
-    \lap \phi + \pd{}{t}(\div \b A) = -\frac{\rho}{\epsilon_0},
-\end{equation}
-
-and
-
-\begin{equation}
-    \9 \lap \b A - \frac{1}{c^2} \pds{\b A}{t} \0 - \nabla \9 \div \b A + \frac{1}{c^2} \pd{\phi}{t} \0 = -\mu_0 \b J.
-\end{equation}
-
-The fields are defined through the derivatives of potentials and so there is some freedom in how we define them. It doesn't have to be just a constant though, it could just be some scalar function. Let the scalar function be denoted $\lambda$, and how it interacts with the potentials is
-
-\begin{equation}
-\begin{split}
-    & \b A' = \b A + \nabla \lambda, \\
-    & \phi' = \phi - \pd{\lambda}{t}.
-\end{split}
-\end{equation}
-
-This function $\lambda$ is called the gauge parameter and the change it creates for the potentials is called a gauge transformation. This gauge can greatly simplify the previous equations.
-
-For example if we are to choose the Coulomb gauge, or sometimes called the radiation gauge, which forces the vector potential to be divergenceless, then Gauss' law reduces back to
-
-\begin{equation}
-    \lap \phi = -\frac{\rho}{\epsilon_0}.
-\end{equation}
-
-A paradox that arises in this gauge is that the scalar potential will instantly respond to the change of the charge distribution, no matter how far away it is. This would seem to contradict relativity, but because the scalar potential is not something you can directly measure, it can not actually allow information to travel faster than light. In this gauge $\phi$ is easy to calculate but $\b A$ is difficult. 
-
-The second most prevalent gauge is called the Lorenz gauge, and is useful for relativistic problems because it preserves Lorentz invariance. The Lorenz gauge is stated as 
-
-\begin{equation}
-    \div \b A = - \frac{1}{c^2}\pd{V}{t}.
-\end{equation}
-
-We saw this gauge in the relativity section before, and so I will not talk to much more about it here. Using the Lorenz gauge though boils down to just solving the inhomogeneous wave equation. We will be assuming the Lorenz gauge from here on out.
-
-\subsection{Retarded Potentials}
-
-Because information takes time to travel from one place to another, namely it travels at the speed of light, having potentials and fields respond instantaneously to the change in charges and currents is inherently wrong. Therefore lets define a retarded time that takes into account the travel of information
-
-\begin{equation}
-    t_r \= t - \frac{\r}{c}.
-\end{equation}
-
-If we just plug these equations into the formulas for the scalar and vector potentials then we get what is called the retarded potentials. Applying this concepts to the fields gets you the wrong answer. Checking that just plugging in the retarded time into the potentials we find that we could have defined an advanced time 
-
-\begin{equation}
-    t_a \= t + \frac{\r}{c},
-\end{equation}
-
-and it would have worked as well. The problem with using advanced time is that it breaks causality which is a big no no.
-
-Now knowing that these potentials work we can just plug them into the equations for the fields and get the solutions. In doing so we run into what is called Jefimenko's equations,
-
-\begin{equation}
-    \b E(\b r,t) = \k \int \9 \frac{\rho(\b r', t_r}{\r^2}\hr + \frac{\dot{\rho}(\b r', t_r)}{c\r}\hr - \frac{\dot{\b J}(\b r', t_r)}{c^2 \r} \0 d\tau',
-\end{equation}
-
-and
-
-\begin{equation}
-    \b B(\b r,t) = \m \int \9 \frac{\b J(\b r', t_r)}{\r^2} + \frac{\dot{\b J}(\b r', t_r}{c\r} \0 \x \hr \hspace{3.5pt} d\tau'.
-\end{equation}
-
-\subsection{Point Charges}
-
-What are the potentials of a moving point charge? Well the answer are the Li\'enard-Wiechert potentials. They are
-
-\begin{equation}
-    \phi(\b r, t) = \k \frac{qc}{\r c - \br \. \b v},
-\end{equation}
-
-and
-
-\begin{equation}
-    \b A(\b r, t) = \frac{\b v}{c^2} \phi(\b r, t).
-\end{equation}
-
-What then are the fields? The fields, if starting from the Li\'enard-Wiechert potentials are
-
-\begin{equation}
-    \b E(\b r,t) \k \frac{q \r}{(\r \. \b u)^3}[(c^2-v^2)\b u + \r \x (\b u \x \b a)],
-\end{equation}
-
-and
-
-\begin{equation}
-    \b B(\b r, t) = \frac{\hr}{c} \x \b E(\b r, t).
-\end{equation}
-
-
 
 
 
